@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity"
+        android:background="#e8e8e8"        >
+
+        <LinearLayout
+            android:id="@+id/upperLayout"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="50dp"
+                android:src="@drawable/logo2"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                app:optRoundCardBackgroundColor="#ffffff"
+                app:optRoundCardElevation="1dp"
+                app:optRoundCardCornerRadius="10dp">
+
+                <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#ffffff"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="SIGN IN"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="25sp" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_layout_emailid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/userEmailId"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:drawableStart="@drawable/email"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
+                                android:hint="E-mail Id"
+                                android:inputType="textEmailAddress"
+                                android:padding="5dp"
+                                android:singleLine="true"
+                                android:textSize="16sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1px"
+                            android:background="@color/colorPrimary" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_layout_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            app:passwordToggleDrawable="@drawable/red_eye_black_24dp"
+                            app:passwordToggleEnabled="true">
+
+                            <EditText
+                                android:id="@+id/password"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:drawableStart="@drawable/red_eye_black_24dp"
+                                android:drawableLeft="@drawable/red_eye_black_24dp"
+                                android:drawablePadding="5dp"
+                                android:gravity="center_vertical"
+                                android:hint="Password"
+                                android:inputType="textPassword"
+                                android:padding="5dp"
+                                android:singleLine="true"
+                                android:textSize="16sp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1px"
+                            android:background="@color/colorPrimary" />
+
+                        <Button
+                            android:id="@+id/btn_signin"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/buttonshape"
+                            android:text="sign in" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="3dp"
+                                android:layout_toStartOf="@+id/center"
+                                android:text="New user?" />
+
+                            <TextView
+                                android:id="@+id/center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true" />
+
+                            <TextView
+                                android:id="@+id/tvsignin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_toEndOf="@id/center"
+                                android:text="Sign Up"
+                                android:textColor="@color/colorPrimary" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+        </RelativeLayout>
+
+    </RelativeLayout>

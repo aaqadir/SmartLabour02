@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/abttoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e8e8e8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
+                android:layout_width="match_parent"
+                android:layout_height="285dp"
+                app:optRoundCardBackgroundColor="#ffffff"
+                app:optRoundCardCornerRadius="10dp"
+                app:optRoundCardElevation="1dp"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Our Team"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="5dp"
+                        android:textAlignment="center"
+                        android:id="@+id/view"
+                        android:background="@color/colorPrimary"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/center"
+                            android:gravity="center_horizontal"
+                            android:layout_centerInParent="true"/>
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/aaq"
+                            android:layout_marginLeft="30dp"
+                            android:src="@drawable/photoaq" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="30dp"
+                            android:id="@+id/masoood"
+                            android:layout_toRightOf="@+id/center"
+                            android:src="@drawable/photoaq" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/shamshad"
+                            android:layout_marginLeft="30dp"
+                            android:layout_below="@+id/center"
+                            android:src="@drawable/photoaq" />
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_toRightOf="@id/center"
+                            android:layout_below="@id/center"
+                            android:layout_marginLeft="30dp"
+                            android:id="@+id/ahmedsir"
+                            android:src="@drawable/photoaq" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mohammed Ahmed"
+                            android:id="@+id/textAhmed"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@+id/aaq"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Professor"
+                            android:id="@+id/textAhmedProfile"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@+id/textAhmed"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masood Ansari"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@id/masoood"
+                            android:layout_toRightOf="@id/center"
+                            android:id="@+id/textMasood"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Developer"
+                            android:layout_below="@id/textMasood"
+                            android:layout_toRightOf="@id/center"
+                            android:layout_marginLeft="20dp"
+                            android:id="@+id/textMasoodProfile"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Shamshad Iraqui"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@id/shamshad"
+                            android:id="@+id/textShamshad"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Developer"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@id/textShamshad"
+                            android:id="@+id/textShamshadProfile"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Abdul Qadir"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@id/ahmedsir"
+                            android:layout_toRightOf="@id/center"
+                            android:id="@+id/textAAQ"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Designer"
+                            android:layout_marginLeft="20dp"
+                            android:layout_below="@id/textShamshad"
+                            android:layout_toRightOf="@id/center"
+                            android:id="@+id/textAAQProfile"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
+                android:layout_width="match_parent"
+                android:layout_height="285dp"
+                app:optRoundCardBackgroundColor="#ffffff"
+                app:optRoundCardCornerRadius="10dp"
+                android:layout_marginTop="20dp"
+                app:optRoundCardElevation="1dp"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mission"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="5dp"
+                        android:textAlignment="center"
+                        android:background="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="Our Mission is to focus on increasing the efficiency of work by providing skilled labourer as per the requirement. Our system aimed at making millions of labour workers happier, smarter and more productive. Workers can learn life skills; share suggestions and report incidents via notes in their language."/>
+                </LinearLayout>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
+                android:layout_width="match_parent"
+                android:layout_height="285dp"
+                app:optRoundCardBackgroundColor="#ffffff"
+                app:optRoundCardCornerRadius="10dp"
+                android:layout_marginTop="20dp"
+                app:optRoundCardElevation="1dp"
+
+                ><LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <View
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="5dp"
+                    android:textAlignment="center"
+                    android:background="@color/colorPrimary"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="5dp"
+                    android:text="M.H.Saboo Siddik College Of Engineering"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="8, Saboo Siddik Polytechnic Road"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Byculla, Mumbai-400 008"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Maharashtra"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="India"/>
+            </LinearLayout>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

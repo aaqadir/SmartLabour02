@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="#e8e8e8"        >
+
+    <LinearLayout
+        android:id="@+id/upperLayout"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="50dp"
+            android:src="@drawable/logo2"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <com.github.captain_miao.optroundcardview.OptRoundCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            app:optRoundCardBackgroundColor="#ffffff"
+            app:optRoundCardElevation="1dp"
+            app:optRoundCardCornerRadius="10dp">
+
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="#ffffff" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIGN UP"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:textColor="@color/black" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/fullName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_profile_black_24dp"
+                        android:gravity="center_vertical"
+                        android:hint="Full Name"
+                        android:inputType="textCapWords"
+                        android:padding="5dp"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_emailid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/userEmailId"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/email"
+                        android:padding="5dp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:hint="E-mail Id"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_mobilenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/signupmobile"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/ic_phone_black_24dp"
+                        android:padding="5dp"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:hint="Mobile Number"
+                        android:inputType="phone"
+                        android:singleLine="true"
+
+                        android:textSize="16sp"/>
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:passwordToggleEnabled = "true"
+                    app:passwordToggleDrawable="@drawable/red_eye_black_24dp">
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/red_eye_black_24dp"
+                        android:drawableStart="@drawable/red_eye_black_24dp"
+                        android:gravity="center_vertical"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_layout_cnpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled = "true"
+
+                    app:passwordToggleDrawable="@drawable/red_eye_black_24dp">
+                    <EditText
+                        android:id="@+id/confirmPassword"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/red_eye_black_24dp"
+                        android:drawableStart="@drawable/red_eye_black_24dp"
+                        android:gravity="center_vertical"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:drawablePadding="5dp"
+                        android:singleLine="true"
+                        android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorPrimary" />
+
+                <CheckBox
+                    android:id="@+id/checkbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/terms_conditions"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_signup"
+                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/buttonshape"
+                    android:text="sign up"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Already user?"
+                        android:layout_marginEnd="3dp"
+                        android:layout_toStartOf="@+id/center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/center"
+                        android:layout_centerInParent="true"/>
+                    <TextView
+                        android:id="@+id/tvsignup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sign In"
+                        android:layout_marginStart="3dp"
+                        android:layout_toEndOf="@id/center"
+                        android:textColor="@color/colorPrimary"/>
+                </RelativeLayout>
+            </LinearLayout>
+            </ScrollView>
+
+        </com.github.captain_miao.optroundcardview.OptRoundCardView>
+    </RelativeLayout>
+</RelativeLayout>
