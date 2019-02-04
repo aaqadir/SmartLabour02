@@ -73,21 +73,21 @@
                             android:layout_height="50dp"
                             android:id="@+id/aaq"
                             android:layout_marginLeft="30dp"
-                            android:src="@drawable/photoaq" />
+                            android:src="@drawable/ahmedsir" />
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="80dp"
                             android:layout_height="50dp"
                             android:layout_marginLeft="30dp"
                             android:id="@+id/masoood"
                             android:layout_toRightOf="@+id/center"
-                            android:src="@drawable/photoaq" />
+                            android:src="@drawable/masood" />
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="80dp"
                             android:layout_height="50dp"
                             android:id="@+id/shamshad"
                             android:layout_marginLeft="30dp"
                             android:layout_below="@+id/center"
-                            android:src="@drawable/photoaq" />
+                            android:src="@drawable/shamshad" />
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="80dp"
                             android:layout_height="50dp"
