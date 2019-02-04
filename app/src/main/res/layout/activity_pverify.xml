@@ -9,13 +9,21 @@
     tools:context=".PverifyActivity"
     android:background="#e8e8e8"  >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/upperLayout"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:background="@drawable/otp2"
+        android:layout_height="300dp"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
-    </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/mobile"/>
+
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,6 +94,7 @@
 
             </LinearLayout>
             </ScrollView>
+
 
         </com.github.captain_miao.optroundcardview.OptRoundCardView>
     </RelativeLayout>
