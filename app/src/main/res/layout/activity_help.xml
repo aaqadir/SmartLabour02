@@ -29,7 +29,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="0dp"
-            android:src="@drawable/mobile" />
+            android:src="@drawable/mobilenum" />
 
     </RelativeLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

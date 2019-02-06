@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".PverifyActivity"
     android:background="#e8e8e8"  >
-
 
     <LinearLayout
         android:id="@+id/upperLayout"
@@ -25,26 +21,17 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="150dp"
-            android:layout_height="130dp"
-            android:background="@drawable/mobile"
-            android:contentDescription="Verification" />
+            android:layout_height="140dp"
+            android:background="@drawable/mobile" />
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="4">
-
-        <ScrollView
+        android:layout_weight="2">
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top">
-
 
         <com.github.captain_miao.optroundcardview.OptRoundCardView
             android:layout_width="match_parent"
@@ -118,10 +105,7 @@
             </LinearLayout>
 
         </com.github.captain_miao.optroundcardview.OptRoundCardView>
-            </RelativeLayout>
         </ScrollView>
 
     </LinearLayout>
-
-
 </LinearLayout>

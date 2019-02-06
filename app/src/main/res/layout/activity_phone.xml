@@ -1,98 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".PhoneActivity"
-    android:background="#e8e8e8"        >
+    tools:context=".PverifyActivity"
+    android:background="#e8e8e8"  >
 
     <LinearLayout
         android:id="@+id/upperLayout"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:background="@drawable/mob"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:background="@drawable/mobilenum" />
+
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-        <com.github.captain_miao.optroundcardview.OptRoundCardView
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            app:optRoundCardBackgroundColor="#ffffff"
-            app:optRoundCardElevation="1dp"
-            app:optRoundCardCornerRadius="10dp">
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:foregroundGravity="top">
+
+
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:background="#ffffff" >
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                app:optRoundCardBackgroundColor="#ffffff"
+                app:optRoundCardCornerRadius="10dp"
+                app:optRoundCardElevation="1dp">
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/phone_verify"
-                    android:textAlignment="center"
-                    android:textSize="25sp"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_notice"
-                    android:textSize="20sp"
-                    android:layout_marginTop="20dp"
-                    />
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/input_layout_mobilenumber"
-                    android:layout_width="fill_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="wrap_content">
-                    <EditText
-                        android:id="@+id/vmobile"
+                    android:layout_margin="20dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/phone_verify"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/phone_notice"
+                        android:textSize="20sp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_layout_mobilenumber"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:drawableLeft="@drawable/ic_phone_black_24dp"
-                        android:padding="5dp"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:hint="Mobile number"
-                        android:inputType="phone"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-                </android.support.design.widget.TextInputLayout>
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1px"
-                    android:background="@color/colorPrimary" />
+                        android:layout_marginTop="30dp">
+
+                        <EditText
+                            android:id="@+id/vmobile"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:drawableLeft="@drawable/ic_phone_black_24dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:hint="Mobile number"
+                            android:inputType="phone"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@color/colorPrimary" />
 
 
-                <Button
-                    android:id="@+id/btn_continue"
-                    android:text="Continue"
-                    android:textColor="#0D0D0D"
-                    android:textSize="20sp"
-                    android:layout_width="200dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="60dp"
-                    android:background="@drawable/buttonshape"
-                    android:layout_marginTop="50dp" />
+                    <Button
+                        android:id="@+id/btn_continue"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/buttonshape"
+                        android:text="Continue"
+                        android:textColor="#0D0D0D"
+                        android:textSize="20sp" />
 
-            </LinearLayout>
-            </ScrollView>
+                </LinearLayout>
 
-        </com.github.captain_miao.optroundcardview.OptRoundCardView>
-    </RelativeLayout>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+        </LinearLayout>
+    </ScrollView>
 
-    </RelativeLayout>
+</LinearLayout>
