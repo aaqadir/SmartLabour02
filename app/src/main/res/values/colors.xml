@@ -5,11 +5,16 @@
     <color name="colorAccent">#1D4BD8</color>
 
     <color name="black">#000</color>
+    <color name="white">#FFFFFF</color>
     <color name="lightorange">#f7c80d</color>
     <color name="lightorangedark">#F09410</color>
 
     <color name="button_selectorcolor">#9E9E9E</color>
     <color name="background_color">#009688</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#EEEEEEEE</color>
+    <color name="navigationBarColor">#212121</color>
 
 </resources>
 

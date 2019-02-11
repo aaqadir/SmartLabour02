@@ -13,37 +13,38 @@
         android:id="@+id/upperLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
+
         android:background="@color/colorPrimary"
-        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="150dp"
             android:layout_height="140dp"
-            android:background="@drawable/mobilenum" />
+            android:layout_gravity="center"
+            android:src="@drawable/mobilenum" />
 
     </LinearLayout>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="top">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
             <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="30dp"
                 app:optRoundCardBackgroundColor="#ffffff"
                 app:optRoundCardCornerRadius="10dp"
-                app:optRoundCardElevation="1dp">
+                app:optRoundCardElevation="2dp">
 
 
                 <LinearLayout
@@ -110,7 +111,9 @@
                 </LinearLayout>
 
             </com.github.captain_miao.optroundcardview.OptRoundCardView>
-        </LinearLayout>
-    </ScrollView>
+
+           </LinearLayout>
+        </ScrollView>
+
 
 </LinearLayout>

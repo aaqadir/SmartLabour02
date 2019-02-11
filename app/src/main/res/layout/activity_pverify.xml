@@ -13,7 +13,7 @@
         android:id="@+id/upperLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical">
@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -39,7 +40,7 @@
                 android:layout_margin="30dp"
                 app:optRoundCardBackgroundColor="#ffffff"
                 app:optRoundCardCornerRadius="10dp"
-                app:optRoundCardElevation="1dp">
+                app:optRoundCardElevation="2dp">
 
 
                 <LinearLayout
