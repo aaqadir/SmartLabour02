@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HelpActivity">
+    tools:context=".LoginActivity">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -120,8 +120,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:drawableStart="@drawable/red_eye_black_24dp"
-                            android:drawableLeft="@drawable/red_eye_black_24dp"
+                            android:drawableStart="@drawable/password"
+                            android:drawableLeft="@drawable/password"
                             android:drawablePadding="5dp"
                             android:gravity="center_vertical"
                             android:hint="Password"
