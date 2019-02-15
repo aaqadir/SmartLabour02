@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class Dashboard extends AppCompatActivity {
+public class LabProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_lab_profile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Dashboard");
+        toolbar.setTitle("LabProfile");
         setSupportActionBar(toolbar);
 
         if(getSupportActionBar()!=null){

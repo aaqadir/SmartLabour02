@@ -1,11 +1,10 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,24 +12,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
+public class LabMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lab_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
-
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final TextView textView2 = findViewById(R.id.textView6);
+       /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -53,7 +53,11 @@ public class MainActivity extends AppCompatActivity
                     textView2.setText("Available");
                 }
             }
-        });
+        });*/
+    }
+    public void onBlueBtnClick(View view) {
+        LinearLayout background = findViewById(R.id.btnlayout);
+        background.setBackgroundColor(Color.WHITE);
     }
 
     @Override
@@ -95,24 +99,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
-            startActivity(new Intent(MainActivity.this, Dashboard.class));
+            startActivity(new Intent(LabMainActivity.this, LabProfile.class));
             // finish();
-        } else if (id == R.id.nav_skills) {
-            startActivity(new Intent(MainActivity.this, SkillsActivity.class));
-
-        } else if (id == R.id.nav_workhistory) {
-            startActivity(new Intent(MainActivity.this, WorkhistoryActivity.class));
+        }  else if (id == R.id.nav_workhistory) {
+            startActivity(new Intent(LabMainActivity.this, WorkhistoryActivity.class));
 
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+            startActivity(new Intent(LabMainActivity.this, WelcomeActivity.class));
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(LabMainActivity.this, SettingsActivity.class));
 
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(MainActivity.this, HelpActivity.class));
+            startActivity(new Intent(LabMainActivity.this, HelpActivity.class));
 
         } else if (id == R.id.nav_about) {
-            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            startActivity(new Intent(LabMainActivity.this, AboutActivity.class));
 
         }
 

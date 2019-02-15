@@ -99,7 +99,7 @@ public class ContNav_Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.cont_profile) {
-            //startActivity(new Intent(ContNav_Activity.this, Dashboard.class));
+            //startActivity(new Intent(ContNav_Activity.this, LabProfile.class));
             // finish();
         } else if (id == R.id.cont_project) {
             //startActivity(new Intent(ContNav_Activity.this, SkillsActivity.class));

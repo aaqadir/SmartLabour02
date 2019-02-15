@@ -11,10 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ContProfile"></activity>
         <activity
             android:name=".ContNav_Activity"
             android:label="@string/title_activity_cont_nav_"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
             android:label="@string/app_name"
@@ -25,12 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Dashboard" />
+        <activity android:name=".LabMainActivity" />
+        <activity android:name=".LabProfile" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".SkillsActivity" />
         <activity android:name=".WorkhistoryActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />

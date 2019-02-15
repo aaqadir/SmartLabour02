@@ -15,7 +15,7 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#EEEEEEEE</color>
     <color name="navigationBarColor">#212121</color>
-
+    <color name="button_color">#DDE91E63</color>
 </resources>
 
 

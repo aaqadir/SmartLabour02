@@ -18,7 +18,7 @@ public class PverifyActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PverifyActivity.this, MainActivity.class);
+                Intent intent = new Intent(PverifyActivity.this, LabMainActivity.class);
                 startActivity(intent);
                 finish();
             }
