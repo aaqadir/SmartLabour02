@@ -29,7 +29,7 @@ public class ContNav_Activity extends AppCompatActivity
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
 
-        final TextView textView2 = findViewById(R.id.textView6);
+       /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -41,7 +41,7 @@ public class ContNav_Activity extends AppCompatActivity
                     textView2.setText("Available");
                 }
             }
-        });
+        });*/
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +99,7 @@ public class ContNav_Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.cont_profile) {
-            //startActivity(new Intent(ContNav_Activity.this, LabProfile.class));
+            startActivity(new Intent(ContNav_Activity.this, ContProfile.class));
             // finish();
         } else if (id == R.id.cont_project) {
             //startActivity(new Intent(ContNav_Activity.this, SkillsActivity.class));

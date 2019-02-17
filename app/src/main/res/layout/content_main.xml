@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LabMainActivity"
     android:layout_margin="20dp"
     tools:showIn="@layout/app_bar_main">
 
-       <TextView
+    <TextView
         android:id="@+id/switch1"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -22,84 +22,99 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/avl"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:text="Available"
-        android:onClick="onBlueBtnClick"/>
-    <Button
-        android:id="@+id/unavl"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:text="Unavailable" />
-    </LinearLayout>
+        <Button
+            android:id="@+id/avl"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonstyle_2"
+            android:backgroundTint="@color/background_color"
+            android:text="Available"
+            android:textColor="@color/white"/>
 
+        <Button
+            android:id="@+id/unavl"
+            android:layout_width="150dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/buttonstyle_2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/background_color"
+            android:text="Unavailable" />
+    </LinearLayout>
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:text="In Progress"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="In Progress"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="03"
-                    android:textColor="@color/background_color"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#A9A9A9" />
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Completed"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/tv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="20"
-                    android:textColor="@color/background_color"
-                    android:textSize="24sp" />
-            </LinearLayout>
+                android:text="03"
+                android:textColor="@color/background_color"
+                android:textSize="24sp" />
 
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#A9A9A9" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/background_color"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary" />
 
 </LinearLayout>

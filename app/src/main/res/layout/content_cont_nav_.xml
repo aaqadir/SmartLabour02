@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ContNav_Activity"
-    android:layout_margin="20dp"
+    android:layout_margin="15dp"
     tools:showIn="@layout/app_bar_cont_nav_">
 
     <TextView
@@ -22,26 +22,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/avl"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:text="Available"/>
+            android:background="@drawable/buttonstyle_2"
+            android:backgroundTint="@color/background_color"
+            android:text="Available"
+            android:textColor="@color/white"/>
+
         <Button
             android:id="@+id/unavl"
             android:layout_width="150dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/buttonstyle_2"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+           android:textColor="@color/background_color"
             android:text="Unavailable" />
     </LinearLayout>
-
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -98,9 +110,8 @@
         </LinearLayout>
 
     </LinearLayout>
-
     <View
-        android:id="@+id/line1"
+        android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
