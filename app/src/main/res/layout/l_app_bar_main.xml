@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LabMainActivity">
-       <android.support.design.widget.AppBarLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:theme="@style/AppTheme">
+    tools:context=".L_MainActivity">
 
               <android.support.v7.widget.Toolbar
                   android:id="@+id/toolbar"
                   android:layout_width="match_parent"
                   android:layout_height="?attr/actionBarSize"
                   android:background="?attr/colorPrimary"
-                  app:popupTheme="@style/AppTheme" />
+                  android:theme="@style/ThemeOverlay.AppCompat"/>
 
-       </android.support.design.widget.AppBarLayout>
-       <include layout="@layout/content_main" />
+              <com.miguelcatalan.materialsearchview.MaterialSearchView
+                  android:id="@+id/search_view"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" />
+
+
+       <include layout="@layout/l_content_main" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -6,19 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class PhoneActivity extends AppCompatActivity {
+public class L_PhoneActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone);
+        setContentView(R.layout.l_phone);
 
         Button button = findViewById(R.id.btn_continue);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PhoneActivity.this, PverifyActivity.class);
+                Intent intent = new Intent(L_PhoneActivity.this, L_PverifyActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

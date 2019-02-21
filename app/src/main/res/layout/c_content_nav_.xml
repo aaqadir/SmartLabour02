@@ -6,9 +6,9 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ContNav_Activity"
+    tools:context=".C_Main_Activity"
     android:layout_margin="15dp"
-    tools:showIn="@layout/app_bar_cont_nav_">
+    tools:showIn="@layout/c_app_bar_nav_">
 
     <TextView
         android:id="@+id/switch1"

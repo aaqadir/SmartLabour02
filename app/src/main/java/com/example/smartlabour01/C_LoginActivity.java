@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+public class C_LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.c_login);
 
         TextView textView = findViewById(R.id.tvsignin);
         Button button = findViewById(R.id.btn_signin);
@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ContNav_Activity.class);
+                Intent intent = new Intent(C_LoginActivity.this, C_Main_Activity.class);
                 startActivity(intent);
                 finish();
             }
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(C_LoginActivity.this, C_RegisterActivity.class);
                 startActivity(intent);
                 finish();
             }

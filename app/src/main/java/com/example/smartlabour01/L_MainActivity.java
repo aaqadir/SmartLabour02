@@ -1,10 +1,8 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,21 +11,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.LinearLayout;
 
-public class ContNav_Activity extends AppCompatActivity
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
+public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    MaterialSearchView searchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cont_nav_);
+        setContentView(R.layout.l_activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
+        toolbar.setTitleTextColor(Color.parseColor("#212121"));
+         searchview = findViewById(R.id.search_view);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
        /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
@@ -42,23 +53,10 @@ public class ContNav_Activity extends AppCompatActivity
                 }
             }
         });*/
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+    }
+    public void onBlueBtnClick(View view) {
+        LinearLayout background = findViewById(R.id.btnlayout);
+        background.setBackgroundColor(Color.WHITE);
     }
 
     @Override
@@ -74,11 +72,13 @@ public class ContNav_Activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.cont_nav_, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem item=menu.findItem(R.id.action_search);
+        searchview.setMenuItem(item);
         return true;
     }
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -86,37 +86,35 @@ public class ContNav_Activity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.cont_profile) {
-            startActivity(new Intent(ContNav_Activity.this, ContProfile.class));
+        if (id == R.id.nav_dashboard) {
+            startActivity(new Intent(L_MainActivity.this, L_Profile.class));
             // finish();
-        } else if (id == R.id.cont_project) {
-            //startActivity(new Intent(ContNav_Activity.this, SkillsActivity.class));
+        }  else if (id == R.id.nav_workhistory) {
+            startActivity(new Intent(L_MainActivity.this, L_WorkHistory.class));
 
-        } else if (id == R.id.cont_hire) {
-            //startActivity(new Intent(ContNav_Activity.this, WorkhistoryActivity.class));
+        } else if (id == R.id.nav_logout) {
+            startActivity(new Intent(L_MainActivity.this, WelcomeActivity.class));
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(L_MainActivity.this, SettingsActivity.class));
 
-        } else if (id == R.id.cont_logout) {
-            startActivity(new Intent(ContNav_Activity.this, WelcomeActivity.class));
-        } else if (id == R.id.cont_settings) {
-            //startActivity(new Intent(ContNav_Activity.this, SettingsActivity.class));
+        } else if (id == R.id.nav_help) {
+            startActivity(new Intent(L_MainActivity.this, HelpActivity.class));
 
-        } else if (id == R.id.cont_help) {
-            //startActivity(new Intent(ContNav_Activity.this, HelpActivity.class));
-
-        } else if (id == R.id.cont_about) {
-            startActivity(new Intent(ContNav_Activity.this, AboutActivity.class));
+        } else if (id == R.id.nav_about) {
+            startActivity(new Intent(L_MainActivity.this, AboutActivity.class));
 
         }
 

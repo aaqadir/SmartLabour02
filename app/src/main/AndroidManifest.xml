@@ -11,9 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ContProfile"></activity>
+        <activity android:name=".C_Hire"></activity>
+        <activity android:name=".C_WorkHistory" />
+        <activity android:name=".C_Profile" />
         <activity
-            android:name=".ContNav_Activity"
+            android:name=".C_Main_Activity"
             android:label="@string/title_activity_cont_nav_"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -26,16 +28,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LabMainActivity" />
-        <activity android:name=".LabProfile" />
+        <activity android:name=".L_MainActivity" />
+        <activity android:name=".L_Profile" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".WorkhistoryActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".PhoneActivity" />
-        <activity android:name=".PverifyActivity" />
+        <activity android:name=".L_WorkHistory" />
+        <activity android:name=".C_LoginActivity" />
+        <activity android:name=".C_RegisterActivity" />
+        <activity android:name=".L_PhoneActivity" />
+        <activity android:name=".L_PverifyActivity" />
     </application>
 
 </manifest>

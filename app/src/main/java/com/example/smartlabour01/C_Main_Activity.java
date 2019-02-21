@@ -1,10 +1,8 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,34 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Switch;
-import android.widget.TextView;
 
-public class LabMainActivity extends AppCompatActivity
+public class C_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lab_main);
+        setContentView(R.layout.c_activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
+        toolbar.setTitle("Welcome");
         setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
        /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
@@ -54,10 +36,23 @@ public class LabMainActivity extends AppCompatActivity
                 }
             }
         });*/
-    }
-    public void onBlueBtnClick(View view) {
-        LinearLayout background = findViewById(R.id.btnlayout);
-        background.setBackgroundColor(Color.WHITE);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+*/
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -73,7 +68,7 @@ public class LabMainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.cont_nav_, menu);
         return true;
     }
 
@@ -85,7 +80,7 @@ public class LabMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
+        if (id == R.id.action_settings) {
             return true;
         }
 
@@ -94,26 +89,29 @@ public class LabMainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(MenuItem item) {        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_dashboard) {
-            startActivity(new Intent(LabMainActivity.this, LabProfile.class));
+        if (id == R.id.cont_profile) {
+            startActivity(new Intent(C_Main_Activity.this, C_Profile.class));
             // finish();
-        }  else if (id == R.id.nav_workhistory) {
-            startActivity(new Intent(LabMainActivity.this, WorkhistoryActivity.class));
+        } else if (id == R.id.cont_project) {
+            startActivity(new Intent(C_Main_Activity.this, C_WorkHistory.class));
 
-        } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(LabMainActivity.this, WelcomeActivity.class));
-        } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(LabMainActivity.this, SettingsActivity.class));
+        } else if (id == R.id.cont_hire) {
+            startActivity(new Intent(C_Main_Activity.this, C_Hire.class));
 
-        } else if (id == R.id.nav_help) {
-            startActivity(new Intent(LabMainActivity.this, HelpActivity.class));
+        } else if (id == R.id.cont_logout) {
+            startActivity(new Intent(C_Main_Activity.this, WelcomeActivity.class));
+            finish();
+        } else if (id == R.id.cont_settings) {
+            startActivity(new Intent(C_Main_Activity.this, SettingsActivity.class));
 
-        } else if (id == R.id.nav_about) {
-            startActivity(new Intent(LabMainActivity.this, AboutActivity.class));
+        } else if (id == R.id.cont_help) {
+            startActivity(new Intent(C_Main_Activity.this, HelpActivity.class));
+
+        } else if (id == R.id.cont_about) {
+            startActivity(new Intent(C_Main_Activity.this, AboutActivity.class));
 
         }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".PverifyActivity">
+    tools:context=".L_PhoneActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -31,7 +31,7 @@
                 android:layout_height="140dp"
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
-                android:background="@drawable/mobotp"
+                android:background="@drawable/mobilenum"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax" />
 
@@ -43,7 +43,6 @@
                 app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -78,14 +77,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Verification"
+                        android:text="@string/phone_verify"
                         android:textSize="25sp"
                         android:textColor="@color/black"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/otp_verify"
+                        android:text="@string/phone_notice"
                         android:textSize="20sp"
                         android:layout_marginTop="20dp"
                         />
@@ -101,15 +100,15 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:drawableLeft="@drawable/ic_otp_black_24dp"
+                            android:drawableLeft="@drawable/ic_phone_black_24dp"
                             android:drawablePadding="5dp"
                             android:gravity="center_vertical"
-                            android:hint="O T P"
+                            android:hint="Mobile Number"
                             android:inputType="phone"
                             android:padding="5dp"
                             android:singleLine="true"
                             android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textSize="20sp" />
                     </android.support.design.widget.TextInputLayout>
                     <View
                         android:layout_width="fill_parent"
@@ -118,8 +117,8 @@
 
 
                     <Button
-                        android:id="@+id/btn_verify"
-                        android:text="Verify"
+                        android:id="@+id/btn_continue"
+                        android:text="Continue"
                         android:textColor="#0D0D0D"
                         android:textSize="20sp"
                         android:layout_width="200dp"

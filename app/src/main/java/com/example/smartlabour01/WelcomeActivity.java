@@ -29,7 +29,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnlab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, PhoneActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, L_PhoneActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -38,7 +38,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btncont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(WelcomeActivity.this, LoginActivity.class);
+                Intent intent2 = new Intent(WelcomeActivity.this, C_LoginActivity.class);
                 startActivity(intent2);
                 finish();
             }
