@@ -13,12 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    MaterialSearchView searchview;
+          MaterialSearchView searchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

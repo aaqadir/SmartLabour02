@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".C_Hire"></activity>
+        <activity android:name=".C_Hire" />
         <activity android:name=".C_WorkHistory" />
         <activity android:name=".C_Profile" />
         <activity
