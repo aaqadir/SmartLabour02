@@ -193,7 +193,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
-                        android:text="Our Mission is to focus on increasing the efficiency of work by providing skilled labourer as per the requirement. Our system aimed at making millions of labour workers happier, smarter and more productive. Workers can learn life skills; share suggestions and report incidents via notes in their language."/>
+                        android:text="@string/about"/>
                 </LinearLayout>
             </com.github.captain_miao.optroundcardview.OptRoundCardView>
             <com.github.captain_miao.optroundcardview.OptRoundCardView
