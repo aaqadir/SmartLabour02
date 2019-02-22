@@ -4,6 +4,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:colorButtonNormal">@color/button_color</item>
     </style>
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

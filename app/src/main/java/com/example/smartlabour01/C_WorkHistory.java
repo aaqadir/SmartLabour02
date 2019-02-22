@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class SettingsActivity extends AppCompatActivity {
+public class C_WorkHistory extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.c_work_history);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Settings");
+        toolbar.setTitle("Project History");
         setSupportActionBar(toolbar);
+
         if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -27,4 +28,5 @@ public class SettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
 }

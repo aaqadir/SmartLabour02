@@ -6,19 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class PverifyActivity extends AppCompatActivity {
+public class L_PverifyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pverify);
+        setContentView(R.layout.l_pverify);
 
         Button button = findViewById(R.id.btn_verify);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PverifyActivity.this, MainActivity.class);
+                Intent intent = new Intent(L_PverifyActivity.this, L_MainActivity.class);
                 startActivity(intent);
                 finish();
             }

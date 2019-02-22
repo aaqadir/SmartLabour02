@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class WorkhistoryActivity extends AppCompatActivity {
+public class C_Profile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workhistory);
+        setContentView(R.layout.c_profile);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.whtoolbar);
-        toolbar.setTitle("Work History");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Profile");
         setSupportActionBar(toolbar);
-
         if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
