@@ -13,12 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    MaterialSearchView searchview;
+          MaterialSearchView searchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +107,7 @@ public class L_MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(L_MainActivity.this, WelcomeActivity.class));
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(L_MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(L_MainActivity.this, LoginActivity.class));
 
         } else if (id == R.id.nav_help) {
             startActivity(new Intent(L_MainActivity.this, HelpActivity.class));
