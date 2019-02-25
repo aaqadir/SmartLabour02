@@ -37,9 +37,8 @@
             android:gravity="center"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/black"
-            android:src="@drawable/border"
-            android:textColor="#FFFFFF"/>
+            android:background="@drawable/border"
+            android:textColor="#000"/>
     </LinearLayout>
 
     <LinearLayout
@@ -72,9 +71,8 @@
             android:id="@+id/btncont"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@color/black"
-            android:src="@drawable/border"
-            android:textColor="#FFFFFF"/>
+            android:background="@drawable/border"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 
