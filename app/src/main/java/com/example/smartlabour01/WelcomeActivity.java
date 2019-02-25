@@ -12,10 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
     LinearLayout l1,l2;
-    ImageButton btnlab,btncont;
+    TextView btnlab,btncont;
     Animation uptodown,downtoup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
