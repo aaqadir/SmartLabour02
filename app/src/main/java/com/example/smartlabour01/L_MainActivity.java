@@ -107,7 +107,7 @@ public class L_MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             startActivity(new Intent(L_MainActivity.this, WelcomeActivity.class));
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(L_MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
 
         } else if (id == R.id.nav_help) {
             startActivity(new Intent(L_MainActivity.this, HelpActivity.class));

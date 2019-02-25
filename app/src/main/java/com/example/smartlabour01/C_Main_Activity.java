@@ -1,7 +1,9 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,8 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
+
 public class C_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListner;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +36,29 @@ public class C_Main_Activity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Welcome");
         setSupportActionBar(toolbar);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("ContractorUser");
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser()==null) {
+            mAuthListner = new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    if (firebaseAuth.getCurrentUser() == null) {
+                        Intent loginIntent = new Intent(C_Main_Activity.this, C_LoginActivity.class);
+                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(loginIntent);
+                        finish();
+                    }
+                }
+            };
+            mAuth.addAuthStateListener(mAuthListner);
+        }
+        else {
+            getCurrentinfo();
+        }
+
+
 
        /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
@@ -102,10 +139,11 @@ public class C_Main_Activity extends AppCompatActivity
             startActivity(new Intent(C_Main_Activity.this, C_Hire.class));
 
         } else if (id == R.id.cont_logout) {
+            mAuth.signOut();
             startActivity(new Intent(C_Main_Activity.this, WelcomeActivity.class));
             finish();
         } else if (id == R.id.cont_settings) {
-            startActivity(new Intent(C_Main_Activity.this, SettingsActivity.class));
+            startActivity(new Intent(C_Main_Activity.this, C_RegisterActivity.class));
 
         } else if (id == R.id.cont_help) {
             startActivity(new Intent(C_Main_Activity.this, HelpActivity.class));
@@ -118,5 +156,30 @@ public class C_Main_Activity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void getCurrentinfo(){
+     /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                *//*TextView name = findViewById(R.id.userName);
+                ImageView profileimage = findViewById(R.id.profileImage);
+                TextView email = findViewById(R.id.userEmail);
+                *//*
+                    String donorname = (String) dataSnapshot.child("Name").getValue();
+                    name.setText(donorname);
+                    String donorimage = (String) dataSnapshot.child("image").getValue();
+                    Picasso.with(NgoHome.this).load(donorimage).into(profileimage);
+                    email.setText(mAuth.getCurrentUser().getEmail());
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }*/
     }
 }
