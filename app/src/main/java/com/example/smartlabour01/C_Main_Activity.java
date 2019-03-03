@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -140,7 +143,7 @@ public class C_Main_Activity extends AppCompatActivity
 
         } else if (id == R.id.cont_logout) {
             mAuth.signOut();
-            startActivity(new Intent(C_Main_Activity.this, WelcomeActivity.class));
+            startActivity(new Intent(C_Main_Activity.this, UserActivity.class));
             finish();
         } else if (id == R.id.cont_settings) {
             startActivity(new Intent(C_Main_Activity.this, C_RegisterActivity.class));
@@ -159,18 +162,18 @@ public class C_Main_Activity extends AppCompatActivity
     }
 
     private void getCurrentinfo(){
-     /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                *//*TextView name = findViewById(R.id.userName);
-                ImageView profileimage = findViewById(R.id.profileImage);
+                TextView name = findViewById(R.id.userName);
+                ImageView profileimage = findViewById(R.id.profileId);
                 TextView email = findViewById(R.id.userEmail);
-                *//*
-                    String donorname = (String) dataSnapshot.child("Name").getValue();
-                    name.setText(donorname);
-                    String donorimage = (String) dataSnapshot.child("image").getValue();
-                    Picasso.with(NgoHome.this).load(donorimage).into(profileimage);
+
+                    String contractorName = (String) dataSnapshot.child("Name").getValue();
+                    name.setText(contractorName);
+               /*     String donorimage = (String) dataSnapshot.child("image").getValue();
+                    Picasso.with(C_Main_Activity.this).load(donorimage).into(profileimage);*/
                     email.setText(mAuth.getCurrentUser().getEmail());
 
                 }
@@ -180,6 +183,6 @@ public class C_Main_Activity extends AppCompatActivity
 
                 }
             });
-        }*/
+        }
     }
 }

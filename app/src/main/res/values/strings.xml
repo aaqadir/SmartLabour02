@@ -34,4 +34,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+
+    <string name="labour">labour</string>
+    <string name="contractor">contractor</string>
+    <string name="login_preferences">com.example.smartlabour01_login_preferances</string>
 </resources>

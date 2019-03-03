@@ -3,6 +3,7 @@ package com.example.smartlabour01;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -94,7 +95,7 @@ public class L_MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -105,7 +106,7 @@ public class L_MainActivity extends AppCompatActivity
             startActivity(new Intent(L_MainActivity.this, L_WorkHistory.class));
 
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(L_MainActivity.this, WelcomeActivity.class));
+            startActivity(new Intent(L_MainActivity.this, UserActivity.class));
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
 
