@@ -34,6 +34,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+<<<<<<< HEAD
     <string name="title_activity_settings2">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -107,4 +108,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+=======
+
+
+    <string name="labour">labour</string>
+    <string name="contractor">contractor</string>
+    <string name="login_preferences">com.example.smartlabour01_login_preferances</string>
+>>>>>>> masood
 </resources>
