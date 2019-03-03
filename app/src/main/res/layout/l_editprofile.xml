@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".C_Profile">
+    tools:context=".L_EditProfile">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_margin="16dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -43,22 +43,20 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-
-                android:text="NA"
+                android:hint="Name"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-
             <TextView
-                android:id="@+id/tvDescription"
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:text="one line Description"
-                android:textSize="18sp"
-                android:textStyle="italic" />
-               
-
+                android:hint="abc@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
 
             <View
@@ -88,12 +86,13 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tv8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="NA"
+                        android:hint="Male"
+                        android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -116,12 +115,13 @@
                         android:text="Age"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-                    <TextView
+                    <EditText
                         android:id="@+id/tv9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="NA"
+                        android:text=""
+                        android:hint="48"
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -162,12 +162,13 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tv6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="NA"
+                        android:hint="0000000000"
+                        android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -190,12 +191,13 @@
                         android:text="Location"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-                    <TextView
+                    <EditText
                         android:id="@+id/tv7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="NA"
+                        android:text=""
+                        android:hint="Mumbai"
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -214,16 +216,15 @@
 
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -232,92 +233,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Email-ID"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="name@email.com"
-                        android:textColor="@color/background_color"
-                        android:textSize="24sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Address"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Mastan Talao Byculla Mumbai Maharashtra"
-                        android:textColor="@color/background_color"
-                        android:textSize="24sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Project Types"
+                        android:text="Skills"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
@@ -329,20 +251,22 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="NA"
+                                android:text=""
+                                android:hint="Carpenter"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="NA"
+                                android:text=""
+                                android:hint="Welder"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
@@ -360,19 +284,21 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="NA"
+                                android:text=""
+                                android:hint="Plumber"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
-                            <TextView
+                            <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="NA"
+                                android:text=""
+                                android:hint="Electrician"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
@@ -385,7 +311,7 @@
                 android:id="@+id/line2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:background="@color/colorPrimary" />
 
 

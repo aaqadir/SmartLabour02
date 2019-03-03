@@ -144,7 +144,7 @@ public class C_Main_Activity extends AppCompatActivity
 
         } else if (id == R.id.cont_logout) {
             mAuth.signOut();
-            startActivity(new Intent(C_Main_Activity.this, WelcomeActivity.class));
+            startActivity(new Intent(C_Main_Activity.this, UserActivity.class));
             finish();
         } else if (id == R.id.cont_settings) {
             startActivity(new Intent(C_Main_Activity.this, C_RegisterActivity.class));

@@ -19,8 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-
+        <activity android:name=".L_EditProfile"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -34,19 +33,17 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".WelcomeActivity" />
-
+        <activity android:name=".UserActivity" />
         <activity android:name=".L_MainActivity" />
         <activity android:name=".L_Profile" />
         <activity android:name=".L_PhoneActivity" />
         <activity android:name=".L_PverifyActivity" />
         <activity android:name=".L_WorkHistory" />
-
         <activity android:name=".C_LoginActivity" />
         <activity android:name=".C_RegisterActivity" />
         <activity android:name=".C_HiredLab" />
         <activity android:name=".C_SearchResults" />
-        <activity android:name=".C_Edit_Profile"/>
+        <activity android:name=".C_EditProfile" />
         <activity android:name=".C_Hire" />
         <activity android:name=".C_WorkHistory" />
         <activity android:name=".C_Profile" />

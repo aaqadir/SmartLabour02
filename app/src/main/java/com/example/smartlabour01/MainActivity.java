@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //startActivity(new Intent(MainActivity.this,UsersActivity.class));
-                Intent intent = new Intent(MainActivity.this,WelcomeActivity.class);
+                Intent intent = new Intent(MainActivity.this,UserActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

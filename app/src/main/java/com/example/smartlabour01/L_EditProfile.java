@@ -7,12 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class C_Edit_Profile extends AppCompatActivity {
+public class L_EditProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_c__edit__profile);
+        setContentView(R.layout.l_editprofile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Profile");
@@ -28,7 +28,7 @@ public class C_Edit_Profile extends AppCompatActivity {
 
         if (id==R.id.edit_profile_done){
             doneButtonClicked();
-            Intent intent = new Intent(C_Edit_Profile.this,C_Profile.class);
+            Intent intent = new Intent(L_EditProfile.this,L_Profile.class);
             startActivity(intent);
             finish();
         }
