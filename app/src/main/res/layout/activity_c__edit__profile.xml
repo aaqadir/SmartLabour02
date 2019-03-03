@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivProfile"
+                android:id="@+id/ivEditProfile"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
@@ -38,7 +38,7 @@
                 android:src="@drawable/dummyimage" />
 
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tv_edit_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -49,7 +49,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tv_email"
+                android:id="@+id/tv_edit_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -87,7 +87,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv8"
+                        android:id="@+id/tv_edit_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -112,16 +112,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Age"
+                        android:text="Work Experience"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <EditText
-                        android:id="@+id/tv9"
+                        android:id="@+id/tv_edit_experience"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text=""
-                        android:hint="48"
+                        android:hint="10 (in years)"
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -163,7 +163,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv6"
+                        android:id="@+id/tv_edit_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -192,7 +192,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <EditText
-                        android:id="@+id/tv7"
+                        android:id="@+id/tv_edit_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -252,7 +252,7 @@
                             android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/tv3"
+                                android:id="@+id/tv_edit_type1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -261,7 +261,7 @@
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
                             <EditText
-                                android:id="@+id/tv4"
+                                android:id="@+id/tv_edit_type3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -285,7 +285,7 @@
                             android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/tv5"
+                                android:id="@+id/tv_edit_type2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -298,6 +298,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text=""
+                                android:id="@+id/tv_edit_type4"
                                 android:hint="Water Supply Construction"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/background_color"

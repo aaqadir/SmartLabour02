@@ -25,6 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class C_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
@@ -167,13 +169,13 @@ public class C_Main_Activity extends AppCompatActivity
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 TextView name = findViewById(R.id.userName);
-                ImageView profileimage = findViewById(R.id.profileId);
+                CircleImageView profileimage = findViewById(R.id.contractorProfileImage);
                 TextView email = findViewById(R.id.userEmail);
 
                     String contractorName = (String) dataSnapshot.child("Name").getValue();
                     name.setText(contractorName);
-               /*     String donorimage = (String) dataSnapshot.child("image").getValue();
-                    Picasso.with(C_Main_Activity.this).load(donorimage).into(profileimage);*/
+                    String contractorImage = (String) dataSnapshot.child("Image").getValue();
+                    Picasso.with(C_Main_Activity.this).load(contractorImage).into(profileimage);
                     email.setText(mAuth.getCurrentUser().getEmail());
 
                 }
