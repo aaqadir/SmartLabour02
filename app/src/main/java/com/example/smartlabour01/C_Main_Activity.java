@@ -138,6 +138,10 @@ public class C_Main_Activity extends AppCompatActivity
         } else if (id == R.id.cont_hire) {
             startActivity(new Intent(C_Main_Activity.this, C_Hire.class));
 
+        } else if (id == R.id.cont_hiredlab) {
+            mAuth.signOut();
+            startActivity(new Intent(C_Main_Activity.this, C_HiredLab.class));
+
         } else if (id == R.id.cont_logout) {
             mAuth.signOut();
             startActivity(new Intent(C_Main_Activity.this, WelcomeActivity.class));

@@ -38,20 +38,6 @@ public class L_MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-       /* final TextView textView2 = findViewById(R.id.textView6);
-        Switch sw = (Switch) findViewById(R.id.switch1);
-        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // The toggle is enabled
-                    textView2.setText("Engaged");
-                } else {
-                    // The toggle is disabled
-                    textView2.setText("Available");
-                }
-            }
-        });*/
     }
     public void onBlueBtnClick(View view) {
         LinearLayout background = findViewById(R.id.btnlayout);
@@ -76,21 +62,6 @@ public class L_MainActivity extends AppCompatActivity
         searchview.setMenuItem(item);
         return true;
     }
-
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

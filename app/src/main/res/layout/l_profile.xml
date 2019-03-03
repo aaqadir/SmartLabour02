@@ -103,7 +103,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Skill 1"
+                            android:text="Skill 1/3yrs"
                             android:textColor="@color/background_color"
                             android:textSize="24sp" />
                         <TextView
@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Skill 1"
+                            android:text="Skill 1/2yrs"
                             android:textColor="@color/background_color"
                             android:textSize="24sp" />
 

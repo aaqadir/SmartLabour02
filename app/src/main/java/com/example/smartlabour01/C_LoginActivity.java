@@ -105,5 +105,4 @@ private TextView signup;
             }
         });
     }
-
 }

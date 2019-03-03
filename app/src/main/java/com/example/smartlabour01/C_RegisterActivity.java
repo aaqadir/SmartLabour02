@@ -102,8 +102,5 @@ private DatabaseReference mDatabase;
             else {
                 Toast.makeText(C_RegisterActivity.this,"Please fill the required details",Toast.LENGTH_LONG).show();
             }
-
-
-
         }
 }
