@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "455963560394",
+    "firebase_url": "https://smartlabour-d7613.firebaseio.com",
+    "project_id": "smartlabour-d7613",
+    "storage_bucket": "smartlabour-d7613.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455963560394:android:6dc4e29c44ac3404",
+        "android_client_info": {
+          "package_name": "com.example.smartlabour01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455963560394-f8bo2i202bst6ist6osrg3eirmaacdp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartlabour01",
+            "certificate_hash": "4b16be8f7d435a3017268ec9e55f68844ac9411b"
+          }
+        },
+        {
+          "client_id": "455963560394-8nifb88hshnv88ntnv196bmnkmbq8f79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartlabour01",
+            "certificate_hash": "98b7c9ceade9081907eb2459dafbe57e92058e31"
+          }
+        },
+        {
+          "client_id": "455963560394-95kc5l3p15906kn1hsno8ajug7683css.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_KGUy-np4Qdtx6IByQ30rOc6VnGXEoEA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455963560394-95kc5l3p15906kn1hsno8ajug7683css.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
