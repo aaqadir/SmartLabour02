@@ -28,14 +28,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
-                android:src="@drawable/ic_add_photo_black_24dp" />
+                android:src="@drawable/dummyimage" />
 
             <TextView
                 android:id="@+id/tvName"
@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Name"
+                android:hint="Name"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="name@email.com"
+                android:hint="abc@gmail.com"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -90,7 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Male"
+                        android:hint="Male"
+                        android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -118,7 +120,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="41"
+                        android:text=""
+                        android:hint="48"
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -164,7 +167,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="0000000000"
+                        android:hint="0000000000"
+                        android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -192,7 +196,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Mumbai"
+                        android:text=""
+                        android:hint="Mumbai"
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
@@ -251,7 +256,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Type 1"
+                                android:text=""
+                                android:hint="Highway Construction"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
                             <EditText
@@ -259,7 +265,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Type 2"
+                                android:text=""
+                                android:hint="Building Construction"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
@@ -282,14 +289,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Type 3"
+                                android:text=""
+                                android:hint="Dam Construction"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Type 4"
+                                android:text=""
+                                android:hint="Water Supply Construction"
                                 android:layout_marginTop="10dp"
                                 android:textColor="@color/background_color"
                                 android:textSize="24sp" />

@@ -83,7 +83,7 @@ private DatabaseReference mDatabase;
                                 current_user_db.child("Contact").setValue(Contact);
                                 current_user_db.child("Email").setValue(mAuth.getCurrentUser().getEmail());
                                 Toast.makeText(C_RegisterActivity.this,"Successful",Toast.LENGTH_LONG).show();
-                                Intent mainIntent = new Intent(C_RegisterActivity.this, C_Profile.class);
+                                Intent mainIntent = new Intent(C_RegisterActivity.this, C_Edit_Profile.class);
      /*                           mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 mainIntent.putExtra("Profile","pic1");
                                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -27,6 +27,7 @@ public class C_Edit_Profile extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id==R.id.edit_profile_done){
+            doneButtonClicked();
             Intent intent = new Intent(C_Edit_Profile.this,C_Profile.class);
             startActivity(intent);
             finish();
@@ -42,5 +43,9 @@ public class C_Edit_Profile extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.done, menu);
         return true;
+    }
+
+    public void doneButtonClicked(){
+
     }
 }
