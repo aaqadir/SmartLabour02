@@ -7,12 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class C_Profile extends AppCompatActivity {
+public class C_Edit_Profile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.c_profile);
+        setContentView(R.layout.activity_c__edit__profile);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Profile");
@@ -26,10 +26,10 @@ public class C_Profile extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.edit_profile) {
-            Intent intent = new Intent(C_Profile.this,C_Edit_Profile.class);
+        if (id==R.id.edit_profile_done){
+            Intent intent = new Intent(C_Edit_Profile.this,C_Profile.class);
             startActivity(intent);
+            finish();
         }
 
         if (item.getItemId()==android.R.id.home)
@@ -40,7 +40,7 @@ public class C_Profile extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit, menu);
+        getMenuInflater().inflate(R.menu.done, menu);
         return true;
     }
 }

@@ -19,8 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+<<<<<<< HEAD
         <activity android:name=".C_HiredLab" />
         <activity android:name=".C_SearchResults" />
+=======
+        <activity android:name=".C_Edit_Profile"></activity>
+>>>>>>> masood
         <activity android:name=".C_Hire" />
         <activity android:name=".C_WorkHistory" />
         <activity android:name=".C_Profile" />
@@ -48,7 +52,7 @@
         <activity android:name=".C_RegisterActivity" />
         <activity android:name=".L_PhoneActivity" />
         <activity android:name=".L_PverifyActivity" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".UserActivity" />
     </application>
 
 </manifest>
