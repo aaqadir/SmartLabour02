@@ -35,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:padding="5dp"
-        android:src="@drawable/ic_add_photo_black_24dp" />
+        app:srcCompat="@drawable/ic_add_photo_black_24dp" />
 
     <TextView
         android:id="@+id/tvName"
@@ -67,92 +67,97 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skills"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Skills"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:text="N.A."
+                    android:textColor="@color/background_color"
+                    android:textSize="24sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:background="#A9A9A9" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Skill 1/3yrs"
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-                        <TextView
-                            android:id="@+id/tv4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Skill 1/2yrs"
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-
-                    </LinearLayout>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#A9A9A9" />
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Skill 2"
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Skill 1"
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:gravity="center"
+                    android:text="N.A."
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/background_color"
+                    android:textSize="24sp" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:text="N.A."
+                    android:textColor="@color/background_color"
+                    android:textSize="24sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:background="#A9A9A9" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="N.A."
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/background_color"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <View
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:background="@color/colorPrimary" />
 
         <LinearLayout
