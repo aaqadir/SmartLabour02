@@ -14,11 +14,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
           MaterialSearchView searchview;
+private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListner;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +60,35 @@ public class L_MainActivity extends AppCompatActivity
                 }
             }
         });*/
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser()==null) {
+            mAuthListner = new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    if (firebaseAuth.getCurrentUser() == null) {
+                        Intent loginIntent = new Intent(L_MainActivity.this, L_PhoneActivity.class);
+                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(loginIntent);
+                        finish();
+                    }
+                }
+            };
+            mAuth.addAuthStateListener(mAuthListner);
+        }
+        else {
+            getCurrentinfo();
+        }
+
+
     }
+
+    public void getCurrentinfo(){
+
+    }
+
     public void onBlueBtnClick(View view) {
         LinearLayout background = findViewById(R.id.btnlayout);
         background.setBackgroundColor(Color.WHITE);
@@ -106,7 +141,9 @@ public class L_MainActivity extends AppCompatActivity
             startActivity(new Intent(L_MainActivity.this, L_WorkHistory.class));
 
         } else if (id == R.id.nav_logout) {
-            startActivity(new Intent(L_MainActivity.this, UserActivity.class));
+     //       mAuth.signOut();
+            startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
+            finish();
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
 

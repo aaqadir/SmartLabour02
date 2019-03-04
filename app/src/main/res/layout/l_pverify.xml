@@ -59,6 +59,7 @@
             android:background="#e8e8e8"
             android:paddingTop="24dp">
 
+
             <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +98,7 @@
                         android:layout_marginTop="30dp">
 
                         <EditText
-                            android:id="@+id/vmobile"
+                            android:id="@+id/mobile_otp"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"

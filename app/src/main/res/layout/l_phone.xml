@@ -96,7 +96,7 @@
                         android:layout_marginTop="30dp">
 
                         <EditText
-                            android:id="@+id/vmobile"
+                            android:id="@+id/labour_mobile"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"

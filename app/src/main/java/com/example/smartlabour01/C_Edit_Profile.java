@@ -258,6 +258,7 @@ private int counter=0;
                  }
              });
          }else {
+                progressDialog.cancel();
                 DatabaseReference database = mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
                 database.child("Gender").setValue(Gender);
                 database.child("Experience").setValue(Experience);
