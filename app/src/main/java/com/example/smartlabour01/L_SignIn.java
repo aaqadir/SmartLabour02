@@ -4,25 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class L_PhoneActivity extends AppCompatActivity {
-
+public class L_SignIn extends AppCompatActivity {
+private TextView forgetPassword,SignUP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.l_phone);
+        setContentView(R.layout.l_signin);
 
-        Button button = findViewById(R.id.btn_continue);
-        button.setOnClickListener(new View.OnClickListener() {
+        SignUP = findViewById(R.id.tvlaboursignUP);
+
+        SignUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(L_PhoneActivity.this, L_PverifyActivity.class);
+                Intent intent = new Intent(getApplicationContext(),L_SignUp.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
     }
 }
