@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".C_Edit_Profile">
+    tools:context=".L_Edit_Profile">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:hint="abc@gmail.com"
+                    android:hint="0000000000"
                     android:textColor="@color/black"
                     android:textSize="24sp" />
 
@@ -250,71 +250,71 @@
                 android:orientation="vertical">
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Project Type"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Skills"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
                     <LinearLayout
 
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-
-                            android:layout_width="0dp"
+                        <EditText
+                            android:id="@+id/tv_edit_type1"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="10dp"
-                            android:layout_weight="1"
                             android:gravity="center"
-                            android:orientation="vertical">
-
-                            <EditText
-                                android:id="@+id/tv_edit_type1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:hint="Highway Construction"
-                                android:text=""
-                                android:textColor="@color/background_color"
-                                android:textSize="24sp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="#A9A9A9" />
-
-                        <LinearLayout
-
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <EditText
-                                android:id="@+id/tv_edit_type2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:hint="Dam Construction"
-                                android:text=""
-                                android:textColor="@color/background_color"
-                                android:textSize="24sp" />
-
-
-                        </LinearLayout>
+                            android:hint="Mason"
+                            android:text=""
+                            android:textColor="@color/background_color"
+                            android:textSize="24sp" />
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#A9A9A9" />
+
+                    <LinearLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/tv_edit_type2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:hint="Electrician"
+                            android:text=""
+                            android:textColor="@color/background_color"
+                            android:textSize="24sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
                 <LinearLayout
 
                     android:layout_width="match_parent"
@@ -338,7 +338,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:hint="Building Construction"
+                            android:hint="Plumber"
                             android:text=""
                             android:textColor="@color/background_color"
                             android:textSize="24sp" />
@@ -365,7 +365,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:hint="Water Supply Construction"
+                            android:hint="Mechanic"
                             android:text=""
                             android:textColor="@color/background_color"
                             android:textSize="24sp" />

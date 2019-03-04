@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".C_Edit_Profile"></activity>
+        <activity android:name=".C_Hired_Labours"></activity>
+        <activity android:name=".L_Edit_Profile" />
+        <activity android:name=".C_Edit_Profile" />
         <activity android:name=".C_Hire" />
         <activity android:name=".C_WorkHistory" />
         <activity android:name=".C_Profile" />
@@ -42,11 +44,12 @@
         <activity android:name=".L_WorkHistory" />
         <activity android:name=".C_LoginActivity" />
         <activity android:name=".C_RegisterActivity" />
-        <activity android:name=".L_PhoneActivity" />
-        <activity android:name=".L_PverifyActivity" />
+        <activity android:name=".L_SignIn" />
+        <activity android:name=".L_SignUp" />
         <activity android:name=".UserActivity" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

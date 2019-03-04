@@ -77,6 +77,7 @@ public void labourButtonClicked(){
    editor.putString(KEY_NAME,labour);
    editor.apply();
    Intent intent = new Intent(UserActivity.this,L_MainActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
    startActivity(intent);
@@ -91,6 +92,7 @@ public void contractorButtonClicked(){
     editor.apply();
     Intent intent = new Intent(UserActivity.this,C_Main_Activity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
     finish();

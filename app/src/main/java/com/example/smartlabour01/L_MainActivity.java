@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.util.Objects;
+
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
           MaterialSearchView searchview;
@@ -34,7 +36,7 @@ private FirebaseAuth mAuth;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
         toolbar.setTitleTextColor(Color.parseColor("#212121"));
          searchview = findViewById(R.id.search_view);
 
@@ -68,8 +70,9 @@ private FirebaseAuth mAuth;
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     if (firebaseAuth.getCurrentUser() == null) {
-                        Intent loginIntent = new Intent(L_MainActivity.this, L_PhoneActivity.class);
+                        Intent loginIntent = new Intent(L_MainActivity.this, L_SignIn.class);
                         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(loginIntent);
                         finish();
@@ -142,10 +145,10 @@ private FirebaseAuth mAuth;
 
         } else if (id == R.id.nav_logout) {
      //       mAuth.signOut();
-            startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
+            startActivity(new Intent(L_MainActivity.this, L_SignIn.class));
             finish();
         } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(L_MainActivity.this, L_PhoneActivity.class));
+            startActivity(new Intent(L_MainActivity.this, L_SignIn.class));
 
         } else if (id == R.id.nav_help) {
             startActivity(new Intent(L_MainActivity.this, HelpActivity.class));
