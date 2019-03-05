@@ -1,7 +1,9 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,21 +16,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
           MaterialSearchView searchview;
-private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListner;
+    private static final String SHARED_PREF_NAME = "labourPref" ;
+    private static final String KEY_NAME = "phoneNumber";
     private DatabaseReference mDatabase;
-
+    private TextView name,phone;
+    private CircleImageView profileimage;
+    private String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +60,11 @@ private FirebaseAuth mAuth;
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        name = navigationView.getHeaderView(0).findViewById(R.id.labourUserNameDisplay);
+        profileimage = navigationView.getHeaderView(0).findViewById(R.id.labourProfileImage);
+        phone = navigationView.getHeaderView(0).findViewById(R.id.labourUserContactDisplay);
+
+
        /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -63,33 +79,45 @@ private FirebaseAuth mAuth;
             }
         });*/
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
-        mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser()==null) {
-            mAuthListner = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    if (firebaseAuth.getCurrentUser() == null) {
-                        Intent loginIntent = new Intent(L_MainActivity.this, L_SignIn.class);
-                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(loginIntent);
-                        finish();
-                    }
-                }
-            };
-            mAuth.addAuthStateListener(mAuthListner);
-        }
-        else {
-            getCurrentinfo();
+         mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
+        user = sharedPreferences.getString(KEY_NAME,null);
+        if (user==null) {
+                Intent intent = new Intent(L_MainActivity.this, L_SignIn.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+        }else {
+            getCurrentInfo();
+
         }
 
 
     }
 
-    public void getCurrentinfo(){
+    public void getCurrentInfo(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            mDatabase.child(Objects.requireNonNull(user)).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                    String contractorName = (String) dataSnapshot.child("Name").getValue();
+                    name.setText(contractorName);
+                    String contractorImage = (String) dataSnapshot.child("Image").getValue();
+                    Picasso.with(L_MainActivity.this).load(contractorImage).into(profileimage);
+                    String Contact = (String) dataSnapshot.child("Contact").getValue();
+                    phone.setText(Contact);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     public void onBlueBtnClick(View view) {
@@ -144,8 +172,15 @@ private FirebaseAuth mAuth;
             startActivity(new Intent(L_MainActivity.this, L_WorkHistory.class));
 
         } else if (id == R.id.nav_logout) {
-     //       mAuth.signOut();
-            startActivity(new Intent(L_MainActivity.this, L_SignIn.class));
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_NAME,null);
+            editor.apply();
+            Intent intent = new Intent(L_MainActivity.this, L_SignIn.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finish();
         } else if (id == R.id.nav_settings) {
             startActivity(new Intent(L_MainActivity.this, L_SignIn.class));

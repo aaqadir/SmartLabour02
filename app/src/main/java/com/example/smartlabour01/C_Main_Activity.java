@@ -30,9 +30,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class C_Main_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListner;
     private DatabaseReference mDatabase;
-
+    private TextView name,email;
+    private CircleImageView profileimage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +42,22 @@ public class C_Main_Activity extends AppCompatActivity
         toolbar.setTitle("Welcome");
         setSupportActionBar(toolbar);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        name = navigationView.getHeaderView(0).findViewById(R.id.contractorUserNameDisplay);
+        profileimage = navigationView.getHeaderView(0).findViewById(R.id.contractorProfileImage);
+        email = navigationView.getHeaderView(0).findViewById(R.id.contractorUserEmailDisplay);
+
+     /*   name = findViewById(R.id.contractorUserNameDisplay);
+        profileimage = findViewById(R.id.contractorProfileImage);
+        email = findViewById(R.id.contractorUserEmailDisplay);
+*/
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("ContractorUser");
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser()==null) {
-            mAuthListner = new FirebaseAuth.AuthStateListener() {
+            FirebaseAuth.AuthStateListener mAuthListner = new FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     if (firebaseAuth.getCurrentUser() == null) {
@@ -93,9 +105,9 @@ public class C_Main_Activity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    /*    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+    */}
 
     @Override
     public void onBackPressed() {
@@ -168,9 +180,6 @@ public class C_Main_Activity extends AppCompatActivity
             mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TextView name = findViewById(R.id.userName);
-                CircleImageView profileimage = findViewById(R.id.contractorProfileImage);
-                TextView email = findViewById(R.id.userEmail);
 
                     String contractorName = (String) dataSnapshot.child("Name").getValue();
                     name.setText(contractorName);

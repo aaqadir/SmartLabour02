@@ -37,16 +37,15 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/ivEditProfile"
+                    android:id="@+id/labourEditProfile"
                     android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:padding="5dp"
                     android:src="@drawable/dummyimage" />
 
                 <TextView
-                    android:id="@+id/tv_edit_Name"
+                    android:id="@+id/labour_profile_edit_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -58,7 +57,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_edit_email"
+                    android:id="@+id/labour_profile_edit_Phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -104,7 +103,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv_edit_gender"
+                        android:id="@+id/labour_profile_edit_gender"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -136,7 +135,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv_edit_experience"
+                        android:id="@+id/labour_profile_edit_experience"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -177,16 +176,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone"
+                        android:text="Age"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv_edit_phone"
+                        android:id="@+id/labour_profile_edit_Age"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:hint="0000000000"
+                        android:hint="30"
                         android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
@@ -215,7 +214,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/tv_edit_location"
+                        android:id="@+id/labour_profile_edit_location"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -276,7 +275,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/tv_edit_type1"
+                            android:id="@+id/labour_profile_edit_skill_1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -302,7 +301,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/tv_edit_type2"
+                            android:id="@+id/labour_profile_edit_skill_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -333,7 +332,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/tv_edit_type3"
+                            android:id="@+id/labour_profile_edit_skill_3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
@@ -360,7 +359,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/tv_edit_type4"
+                            android:id="@+id/labour_profile__edit_skill_4"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"

@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/fullName"
+                            android:id="@+id/labourFullName"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -113,11 +113,11 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/signupmobile"
+                            android:id="@+id/labourSignUpMobile"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:drawableLeft="@drawable/ic_phone_black_24dp"
+                            android:drawableStart="@drawable/ic_phone_black_24dp"
                             android:drawablePadding="5dp"
                             android:gravity="center_vertical"
                             android:hint="Mobile Number"
@@ -142,7 +142,7 @@
                         app:passwordToggleEnabled="true">
 
                         <EditText
-                            android:id="@+id/password"
+                            android:id="@+id/labourSignUpPassword"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -171,7 +171,7 @@
                         app:passwordToggleEnabled="true">
 
                         <EditText
-                            android:id="@+id/confirmPassword"
+                            android:id="@+id/labourSignUpConfirmPassword"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
@@ -193,7 +193,7 @@
 
 
                     <Button
-                        android:id="@+id/btn_signup"
+                        android:id="@+id/btn_labour_SignUp"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"

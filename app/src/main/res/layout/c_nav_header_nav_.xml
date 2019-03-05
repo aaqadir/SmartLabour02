@@ -21,11 +21,11 @@
     android:text=""
         android:textColor="@color/black"
         android:hint="Name"
-        android:id="@+id/userName"
+        android:id="@+id/contractorUserNameDisplay"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/userEmail"
+        android:id="@+id/contractorUserEmailDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

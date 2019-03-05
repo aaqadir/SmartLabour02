@@ -24,17 +24,15 @@ import java.util.Objects;
 public class C_RegisterActivity extends AppCompatActivity {
 
 private EditText name,email,phone,password,confirmPassword;
-private TextView signin;
-private Button signup;
-private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c_register);
 
-        signin = findViewById(R.id.tvsignup);
-        signup   = findViewById(R.id.btn_signup);
+        TextView signin = findViewById(R.id.tvsignup);
+        Button signup = findViewById(R.id.btn_signup);
 
         name = findViewById(R.id.fullName);
         email = findViewById(R.id.userEmailId);
@@ -73,6 +71,7 @@ private DatabaseReference mDatabase;
                 progressDialog.show();
                 if (Password.equals(ConfirmPassword)) {
                     progressDialog.cancel();
+
                     mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

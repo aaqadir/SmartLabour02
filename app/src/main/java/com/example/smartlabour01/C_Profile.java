@@ -29,7 +29,6 @@ public class C_Profile extends AppCompatActivity {
     private TextView gender,experience,phone,location,type1,type2,type3,type4,name,email;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-    private StorageReference storageReference;
     private CircleImageView circleImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class C_Profile extends AppCompatActivity {
         }
 
         name = findViewById(R.id.tvName);
-        email = findViewById(R.id.tv_Email);
+        email = findViewById(R.id.tv_email);
         gender = findViewById(R.id.tv_gender);
         experience = findViewById(R.id.tv_experience);
         phone = findViewById(R.id.tv_phone);
@@ -54,7 +53,6 @@ public class C_Profile extends AppCompatActivity {
         type2 = findViewById(R.id.tv_type2);
         type3 = findViewById(R.id.tv_type3);
         type4 = findViewById(R.id.tv_type4);
-        storageReference = FirebaseStorage.getInstance().getReference();
         circleImageView = findViewById(R.id.ivProfile);
 
         mAuth = FirebaseAuth.getInstance();
