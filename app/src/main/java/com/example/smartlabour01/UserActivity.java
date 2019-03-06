@@ -26,8 +26,8 @@ public class UserActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getColor(R.color.black));
         }
-        labour = findViewById(R.id.labour);
-        contractor = findViewById(R.id.contractor);
+        labour = findViewById(R.id.UserLabour);
+        contractor = findViewById(R.id.UserContractor);
 
         l1 = (LinearLayout) findViewById(R.id.l1);
         l2 = (LinearLayout) findViewById(R.id.l2);
