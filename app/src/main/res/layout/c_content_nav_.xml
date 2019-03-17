@@ -11,38 +11,14 @@
     tools:showIn="@layout/c_app_bar_nav_">
 
     <TextView
-        android:id="@+id/switch1"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Current Status"
-        android:textSize="30sp" />
-    <LinearLayout
-        android:id="@+id/btnlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Project Details"
+        android:textSize="24sp"
+        android:textAllCaps="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/avl"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/buttonstyle_2"
-            android:backgroundTint="@color/background_color"
-            android:text="Available"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/unavl"
-            android:layout_width="150dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/buttonstyle_2"
-            android:layout_height="wrap_content"
-           android:textColor="@color/background_color"
-            android:text="Unavailable" />
-    </LinearLayout>
+        android:gravity="center"
+        android:textStyle="bold"/>
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
@@ -72,11 +48,11 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/textViewInProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="03"
+                android:text="00"
                 android:textColor="@color/background_color"
                 android:textSize="24sp" />
 
@@ -100,11 +76,11 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tv2"
+                android:id="@+id/textViewCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="20"
+                android:text="00"
                 android:textColor="@color/background_color"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -116,5 +92,23 @@
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="@color/colorPrimary" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/contractorProjectDetails">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

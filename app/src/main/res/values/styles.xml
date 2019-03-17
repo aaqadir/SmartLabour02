@@ -10,6 +10,7 @@
         <item name="windowNoTitle">true</item>
         <item name="colorButtonNormal">@color/button_color</item>
     </style>
+
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:colorAccent" tools:targetApi="lollipop">@color/colorPrimary</item>
     </style>

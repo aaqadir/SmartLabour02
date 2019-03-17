@@ -17,6 +17,10 @@
             android:icon="@drawable/add_group"
             android:title="Hire" />
         <item
+            android:id="@+id/cont_request"
+            android:icon="@drawable/add_group"
+            android:title="Requested Labour Individually" />
+        <item
             android:id="@+id/cont_logout"
             android:icon="@drawable/ic_logout_black_24dp"
             android:title="Logout" />
@@ -24,10 +28,6 @@
 
     <item android:title=" ">
         <menu>
-            <item
-                android:id="@+id/cont_settings"
-                android:icon="@drawable/ic_settings_black_24dp"
-                android:title="Settings" />
             <item
                 android:id="@+id/cont_help"
                 android:icon="@drawable/ic_help_black_24dp"

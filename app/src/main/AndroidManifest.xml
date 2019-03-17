@@ -16,6 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".C_Request_Labour_Individually"></activity>
+        <activity android:name=".C_Add_Projects" />
+        <activity android:name=".C_Hire_Individually" />
+        <activity
+            android:name=".HireIndividualLabour"
+            android:label="@string/title_activity_hire_individual_labour"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HireIndividully"
+            android:label="@string/title_activity_hire_individully"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".C_Hired_Labours" />
         <activity android:name=".L_Edit_Profile" />
         <activity android:name=".C_Edit_Profile" />
