@@ -16,7 +16,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="90dp"
-            android:id="@+id/labour_card_profile_image"
+            android:id="@+id/hired_labour_card_profile_image"
             android:layout_height="90dp"
             android:src="@drawable/dummyimage"/>
 
@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/labour_card_name"
+                android:id="@+id/hired_labour_card_name"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:hint="Name"/>
@@ -38,16 +38,16 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="Contact"
-                android:id="@+id/labour_card_contact"
+                android:id="@+id/hired_labour_card_contact"
                 android:textSize="20sp"
                 android:layout_marginTop="5dp"/>
             <TextView
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Experience"
+                android:hint="Skills"
                 android:textSize="20sp"
-                android:id="@+id/labour_card_experience"
+                android:id="@+id/hired_labour_card_skills"
                 android:layout_marginTop="5dp"/>
         </LinearLayout>
     </LinearLayout>

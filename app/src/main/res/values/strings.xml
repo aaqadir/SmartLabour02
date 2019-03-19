@@ -41,4 +41,6 @@
     <string name="login_preferences">com.example.smartlabour01_login_preferances</string>
     <string name="title_activity_hire_individully">HireIndividully</string>
     <string name="title_activity_hire_individual_labour">HireIndividualLabour</string>
+    <string name="title_activity_c__hired__labour__for__projects">C_Hired_Labour_For_Projects
+    </string>
 </resources>

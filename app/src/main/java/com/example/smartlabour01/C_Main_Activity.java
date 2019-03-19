@@ -131,7 +131,7 @@ public class C_Main_Activity extends AppCompatActivity
             projectList.clear();
             DecimalFormat df = new DecimalFormat("00");
            long count =dataSnapshot.getChildrenCount();
-           inProgress.setText(df.format(count));
+          // inProgress.setText(df.format(count));
 
             if (dataSnapshot.exists()) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -141,7 +141,8 @@ public class C_Main_Activity extends AppCompatActivity
                     projectList.add(project);
 
                 }
-
+              long c=  adapter.getItemCount();
+                inProgress.setText(df.format(c));
                 adapter.notifyDataSetChanged();
 
             }
@@ -189,7 +190,7 @@ public class C_Main_Activity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {        // Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.cont_profile) {
