@@ -94,7 +94,6 @@ private ArrayAdapter adapter;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String skill = listView.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),skill,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),HireIndividualLabour.class);
                 intent.putExtra("Skill", skill);
                 startActivity(intent);

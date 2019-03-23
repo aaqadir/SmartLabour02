@@ -74,7 +74,7 @@ public class C_Main_Activity extends AppCompatActivity
 
         mInstaList.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
           //  fetch();
 
         if (mAuth.getCurrentUser() == null) {
@@ -93,6 +93,7 @@ public class C_Main_Activity extends AppCompatActivity
             mAuth.addAuthStateListener(mAuthListner);
         } else {
             getCurrentinfo();
+          //  fetch();
         }
 
 
@@ -107,11 +108,12 @@ public class C_Main_Activity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+          if (mAuth.getCurrentUser()!=null)
             fetch();
     }
 
     public void fetch(){
-        query = databaseReference;
+        query = databaseReference.child("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
         query.addListenerForSingleValueEvent(valueEventListener);
     }
 

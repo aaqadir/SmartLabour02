@@ -71,9 +71,22 @@ public class HireIndividualLabour extends AppCompatActivity {
 
     private void fetch() {
         //   swipeRefreshLayout.setRefreshing(true);
+        String Skill;
+        switch (skill) {
+            case "Tradesman (Repairing Concrete,Finishing)":
+                Skill = "Tradesman";
+                break;
+            case "Machine Operator (Temporary Lift , Bending Metal Rods)":
+                Skill = "Machine Operator";
+                break;
+            default:
+                Skill = skill;
+                break;
+        }
+
         Query query;
          query = mDatabase;
-         query = query.orderByChild("Type1").equalTo(skill);
+         query = query.orderByChild(Skill).equalTo("Yes");
       FirebaseRecyclerOptions<Labour> options = new FirebaseRecyclerOptions.Builder<Labour>().setQuery(query, new SnapshotParser<Labour>() {
             @NonNull
             @Override
@@ -82,8 +95,7 @@ public class HireIndividualLabour extends AppCompatActivity {
                     return new Labour(Objects.requireNonNull(snapshot.child("Name").getValue()).toString(),
                             Objects.requireNonNull(snapshot.child("Contact").getValue()).toString(),
                             Objects.requireNonNull(snapshot.child("Experience").getValue()).toString(),
-                            Objects.requireNonNull(snapshot.child("Image").getValue()).toString(),
-                            Objects.requireNonNull(snapshot.child("Type1").getValue()).toString());
+                            Objects.requireNonNull(snapshot.child("Image").getValue()).toString());
                 /*} else {
                     return new Labour( "NA","NA","NA","NA","NA");
                 }*/
@@ -103,6 +115,7 @@ public class HireIndividualLabour extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(),C_Hire_Labour.class);
+                        intent.putExtra("Skill",skill);
                         intent.putExtra("PostId",post_key);
                         startActivity(intent);
                          //   Toast.makeText(getApplicationContext(), "" + post_key, Toast.LENGTH_LONG).show();
