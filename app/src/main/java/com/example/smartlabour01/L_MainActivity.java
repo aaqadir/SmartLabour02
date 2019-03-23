@@ -182,9 +182,6 @@ public class L_MainActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(L_MainActivity.this, L_SignIn.class));
-
         } else if (id == R.id.nav_help) {
             startActivity(new Intent(L_MainActivity.this, HelpActivity.class));
 

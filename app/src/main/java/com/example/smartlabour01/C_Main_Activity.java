@@ -1,7 +1,5 @@
 package com.example.smartlabour01;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,18 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -207,7 +197,7 @@ public class C_Main_Activity extends AppCompatActivity
             startActivity(new Intent(C_Main_Activity.this, UserActivity.class));
             finish();
         } else if (id == R.id.cont_request) {
-            startActivity(new Intent(C_Main_Activity.this, C_Request_Labour_Individually.class));
+            startActivity(new Intent(C_Main_Activity.this, C_Pending_Request_Labour.class));
 
         } else if (id == R.id.cont_help) {
             startActivity(new Intent(C_Main_Activity.this, HelpActivity.class));

@@ -14,7 +14,10 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +42,11 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class L_Edit_Profile extends AppCompatActivity {
-    private EditText gender, experience, location, type1, type2, type3, type4, age;
+    private EditText age, experience, location;
     private TextView name, phone;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private CheckBox welder,carpenter,electrician,mason,plumber,truckdriver,pipefitter,tradesman,craneoperator,smith,machineoperator;
     private DatabaseReference mDatabase;
     private Uri resultUri;
     private CircleImageView circleImageView;
@@ -60,15 +66,10 @@ public class L_Edit_Profile extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         name = findViewById(R.id.labour_profile_edit_Name);
-        gender = findViewById(R.id.labour_profile_edit_gender);
         experience = findViewById(R.id.labour_profile_edit_experience);
         phone = findViewById(R.id.labour_profile_edit_Phone);
         age = findViewById(R.id.labour_profile_edit_Age);
         location = findViewById(R.id.labour_profile_edit_location);
-        type1 = findViewById(R.id.labour_profile_edit_skill_1);
-        type2 = findViewById(R.id.labour_profile_edit_skill_2);
-        type3 = findViewById(R.id.labour_profile_edit_skill_3);
-        type4 = findViewById(R.id.labour_profile__edit_skill_4);
         storageReference = FirebaseStorage.getInstance().getReference();
         circleImageView = findViewById(R.id.labourEditProfile);
         circleImageView.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +79,19 @@ public class L_Edit_Profile extends AppCompatActivity {
             }
         });
         mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+        radioGroup = findViewById(R.id.radioGroup);
+
+        welder = findViewById(R.id.checkboxWelder);
+        carpenter = findViewById(R.id.checkboxCarpenter);
+        electrician = findViewById(R.id.checkboxElectrician);
+        mason = findViewById(R.id.checkboxMason);
+        plumber = findViewById(R.id.checkboxPlumber);
+        truckdriver = findViewById(R.id.checkboxTruckDriver);
+        pipefitter = findViewById(R.id.checkboxPipeFitter);
+        tradesman = findViewById(R.id.checkboxTradesman);
+        craneoperator = findViewById(R.id.checkboxCraneOperator);
+        smith = findViewById(R.id.checkboxSmith);
+        machineoperator = findViewById(R.id.checkboxMachineOperator);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,31 +103,66 @@ public class L_Edit_Profile extends AppCompatActivity {
 
         String profile = Objects.requireNonNull(getIntent().getExtras()).getString("Profile");
         if (Objects.requireNonNull(profile).equals("pic")) {
+            final RadioButton male,female;
+            male = findViewById(R.id.radioMale);
+            female = findViewById(R.id.radioFemale);
             mDatabase.child(Objects.requireNonNull(user)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     image = (String) dataSnapshot.child("Image").getValue();
                     String Name = (String) dataSnapshot.child("Name").getValue();
                     String Contact = (String) dataSnapshot.child("Contact").getValue();
-                    String Gender = (String) dataSnapshot.child("Gender").getValue();
                     String Age = (String) dataSnapshot.child("Age").getValue();
                     String Location = (String) dataSnapshot.child("Location").getValue();
                     String Experience = (String) dataSnapshot.child("Experience").getValue();
-                    String Type1 = (String) dataSnapshot.child("Type1").getValue();
-                    String Type2 = (String) dataSnapshot.child("Type2").getValue();
-                    String Type3 = (String) dataSnapshot.child("Type3").getValue();
-                    String Type4 = (String) dataSnapshot.child("Type4").getValue();
                     Picasso.with(L_Edit_Profile.this).load(image).into(circleImageView);
+                    String Gender = (String) dataSnapshot.child("Gender").getValue();
+                    if (Objects.requireNonNull(Gender).equals("Male"))
+                        radioGroup.check(male.getId());
+                    if (Gender.equals("Female"))
+                        radioGroup.check(female.getId());
+
+                    String Welder,Carpenter,Electrician,Mason,Plumber,Truckdriver,Pipefitter,Tradesman,Craneoperator,Smith,Machineoperator;
+                    Welder = (String) dataSnapshot.child("Welder").getValue();
+                    Carpenter = (String) dataSnapshot.child("Carpenter").getValue();
+                    Electrician = (String) dataSnapshot.child("Electrician").getValue();
+                    Mason = (String) dataSnapshot.child("Mason").getValue();
+                    Plumber = (String) dataSnapshot.child("Plumber").getValue();
+                    Truckdriver = (String) dataSnapshot.child("Truck Driver").getValue();
+                    Pipefitter = (String) dataSnapshot.child("Pipe Fitter").getValue();
+                    Tradesman = (String) dataSnapshot.child("Tradesman").getValue();
+                    Craneoperator = (String) dataSnapshot.child("Crane Operator").getValue();
+                    Smith = (String) dataSnapshot.child("Smith").getValue();
+                    Machineoperator = (String) dataSnapshot.child("Machine Operator").getValue();
+
+                    if (Objects.requireNonNull(Welder).equals("Yes"))
+                        welder.setChecked(true);
+                    if (Objects.requireNonNull(Carpenter).equals("Yes"))
+                        carpenter.setChecked(true);
+                    if (Objects.requireNonNull(Electrician).equals("Yes"))
+                        electrician.setChecked(true);
+                    if (Objects.requireNonNull(Mason).equals("Yes"))
+                        mason.setChecked(true);
+                    if (Objects.requireNonNull(Plumber).equals("Yes"))
+                        plumber.setChecked(true);
+                    if (Objects.requireNonNull(Truckdriver).equals("Yes"))
+                        truckdriver.setChecked(true);
+                    if (Objects.requireNonNull(Pipefitter).equals("Yes"))
+                        pipefitter.setChecked(true);
+                    if (Objects.requireNonNull(Tradesman).equals("Yes"))
+                        tradesman.setChecked(true);
+                    if (Objects.requireNonNull(Craneoperator).equals("Yes"))
+                        craneoperator.setChecked(true);
+                    if (Objects.requireNonNull(Smith).equals("Yes"))
+                        smith.setChecked(true);
+                    if (Objects.requireNonNull(Machineoperator).equals("Yes"))
+                        machineoperator.setChecked(true);
+
                     name.setText(Name);
-                    gender.setText(Gender);
                     experience.setText(Experience);
                     phone.setText(Contact);
-                    age.setText(Age);
                     location.setText(Location);
-                    type1.setText(Type1);
-                    type2.setText(Type2);
-                    type3.setText(Type3);
-                    type4.setText(Type4);
+                    age.setText(Age);
                 }
 
                 @Override
@@ -187,17 +236,70 @@ public class L_Edit_Profile extends AppCompatActivity {
     }
 
     public void doneButtonClicked() {
-            final String Gender = gender.getText().toString().trim();
             final String Experience = experience.getText().toString().trim();
-            final String Phone = phone.getText().toString().trim();
             final String Age = age.getText().toString().trim();
             final String Location = location.getText().toString().trim();
-            final String Type1 = type1.getText().toString().trim();
-            final String Type2 = type2.getText().toString().trim();
-            final String Type3 = type3.getText().toString().trim();
-            final String Type4 = type4.getText().toString().trim();
+            final String Welder,Carpenter,Electrician,Mason,Plumber,Truckdriver,Pipefitter,Tradesman,Craneoperator,Smith,Machineoperator;
+            int selectedId = radioGroup.getCheckedRadioButtonId();
+            radioButton = findViewById(selectedId);
+        final String Gender = radioButton.getText().toString().trim();
 
-            if (!TextUtils.isEmpty(Gender) && !TextUtils.isEmpty(Experience) && !TextUtils.isEmpty(Phone) && !TextUtils.isEmpty(Location)) {
+        if (welder.isChecked())
+                Welder = "Yes";
+            else
+                Welder = "NA";
+
+            if (carpenter.isChecked())
+                Carpenter = "Yes";
+            else
+                Carpenter = "NA";
+
+        if (electrician.isChecked())
+            Electrician = "Yes";
+        else
+            Electrician = "NA";
+
+        if (mason.isChecked())
+            Mason = "Yes";
+        else
+            Mason = "NA";
+
+        if (plumber.isChecked())
+            Plumber = "Yes";
+        else
+            Plumber = "NA";
+
+        if (truckdriver.isChecked())
+            Truckdriver = "Yes";
+        else
+            Truckdriver = "NA";
+
+        if (pipefitter.isChecked())
+            Pipefitter = "Yes";
+        else
+            Pipefitter = "NA";
+
+        if (tradesman.isChecked())
+           Tradesman = "Yes";
+        else
+            Tradesman = "NA";
+
+        if (craneoperator.isChecked())
+            Craneoperator = "Yes";
+        else
+            Craneoperator = "NA";
+
+        if (smith.isChecked())
+            Smith = "Yes";
+        else
+            Smith = "NA";
+
+        if (machineoperator.isChecked())
+            Machineoperator = "Yes";
+        else
+            Machineoperator = "NA";
+
+            if (!TextUtils.isEmpty(Experience) && !TextUtils.isEmpty(Age) && !TextUtils.isEmpty(Location)) {
                 final ProgressDialog progressDialog = new ProgressDialog(L_Edit_Profile.this, R.style.MyAlertDialogStyle);
                 progressDialog.setTitle("Profile Updating");
                 progressDialog.setMessage("Uploading...Plz wait...");
@@ -227,32 +329,22 @@ public class L_Edit_Profile extends AppCompatActivity {
                                 //                      Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_LONG).show();
                                 progressDialog.cancel();
                                 DatabaseReference database = mDatabase.child(Objects.requireNonNull(user));
-                                database.child("Gender").setValue(Gender);
                                 database.child("Experience").setValue(Experience);
-                                database.child("Contact").setValue(Phone);
                                 database.child("Age").setValue(Age);
+                                database.child("Gender").setValue(Gender);
                                 database.child("Location").setValue(Location);
                                 database.child("Image").setValue(Objects.requireNonNull(downloadUrl).toString());
-                                if (!Type1.isEmpty()) {
-                                    database.child("Type1").setValue(Type1);
-                                } else {
-                                    database.child("Type1").setValue("NA");
-                                }
-                                if (!Type2.isEmpty()) {
-                                    database.child("Type2").setValue(Type2);
-                                } else {
-                                    database.child("Type2").setValue("NA");
-                                }
-                                if (!Type3.isEmpty()) {
-                                    database.child("Type3").setValue(Type3);
-                                } else {
-                                    database.child("Type3").setValue("NA");
-                                }
-                                if (!Type4.isEmpty()) {
-                                    database.child("Type4").setValue(Type4);
-                                } else {
-                                    database.child("Type4").setValue("NA");
-                                }
+                                database.child("Welder").setValue(Welder);
+                                database.child("Carpenter").setValue(Carpenter);
+                                database.child("Electrician").setValue(Electrician);
+                                database.child("Mason").setValue(Mason);
+                                database.child("Plumber").setValue(Plumber);
+                                database.child("Truck Driver").setValue(Truckdriver);
+                                database.child("Pipe Fitter").setValue(Pipefitter);
+                                database.child("Tradesman").setValue(Tradesman);
+                                database.child("Crane Operator").setValue(Craneoperator);
+                                database.child("Smith").setValue(Smith);
+                                database.child("Machine Operator").setValue(Machineoperator);
                                 Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), L_MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -265,31 +357,21 @@ public class L_Edit_Profile extends AppCompatActivity {
                 } else {
                     progressDialog.cancel();
                     DatabaseReference database = mDatabase.child(Objects.requireNonNull(user));
-                    database.child("Gender").setValue(Gender);
-                    database.child("Age").setValue(Age);
                     database.child("Experience").setValue(Experience);
-                    database.child("Contact").setValue(Phone);
+                    database.child("Age").setValue(Age);
+                    database.child("Gender").setValue(Gender);
                     database.child("Location").setValue(Location);
-                    if (!Type1.isEmpty()) {
-                        database.child("Type1").setValue(Type1);
-                    } else {
-                        database.child("Type1").setValue("NA");
-                    }
-                    if (!Type2.isEmpty()) {
-                        database.child("Type2").setValue(Type2);
-                    } else {
-                        database.child("Type2").setValue("NA");
-                    }
-                    if (!Type3.isEmpty()) {
-                        database.child("Type3").setValue(Type3);
-                    } else {
-                        database.child("Type3").setValue("NA");
-                    }
-                    if (!Type4.isEmpty()) {
-                        database.child("Type4").setValue(Type4);
-                    } else {
-                        database.child("Type4").setValue("NA");
-                    }
+                    database.child("Welder").setValue(Welder);
+                    database.child("Carpenter").setValue(Carpenter);
+                    database.child("Electrician").setValue(Electrician);
+                    database.child("Mason").setValue(Mason);
+                    database.child("Plumber").setValue(Plumber);
+                    database.child("Truck Driver").setValue(Truckdriver);
+                    database.child("Pipe Fitter").setValue(Pipefitter);
+                    database.child("Tradesman").setValue(Tradesman);
+                    database.child("Crane Operator").setValue(Craneoperator);
+                    database.child("Smith").setValue(Smith);
+                    database.child("Machine Operator").setValue(Machineoperator);
                     Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), L_MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

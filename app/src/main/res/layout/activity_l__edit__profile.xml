@@ -19,26 +19,25 @@
             app:popupTheme="@style/AppTheme" />
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4"
+                android:layout_height="150dp"
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/labourEditProfile"
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:padding="5dp"
                     android:src="@drawable/dummyimage" />
@@ -78,13 +77,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_weight="2"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -97,19 +94,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gender"
+                        android:text="Age"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/labour_profile_edit_gender"
+                        android:id="@+id/labour_profile_edit_Age"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:hint="Male"
+                        android:hint="eg : 30"
                         android:text=""
                         android:textColor="@color/background_color"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:inputType="number"/>
 
                 </LinearLayout>
 
@@ -138,10 +136,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:hint="10 (in years)"
+                        android:hint="eg : 10(in years)"
                         android:text=""
                         android:textColor="@color/background_color"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:inputType="number" />
 
 
                 </LinearLayout>
@@ -157,58 +156,80 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical"
+>
 
-                <LinearLayout
-
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Age"
+                        android:text="Gender"
                         android:textSize="18sp"
+                        android:layout_gravity="center"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/labour_profile_edit_Age"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
+                    <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:id="@+id/radioGroup"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:hint="30"
-                        android:text=""
-                        android:textColor="@color/background_color"
-                        android:textSize="24sp" />
-
+                        android:id="@+id/radioMale"
+                        android:textSize="16sp"
+                        android:layout_marginEnd="50dp"
+                        android:text="Male"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:id="@+id/radioFemale"
+                        android:layout_marginStart="50dp"
+                        android:layout_height="match_parent"
+                        android:text="Female"/>
+                    </RadioGroup>
                 </LinearLayout>
+            </LinearLayout>
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary" />
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="#A9A9A9" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-                <LinearLayout
-
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Location"
+                        android:layout_gravity="center"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -217,13 +238,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:hint="Mumbai"
+                        android:hint="eg : Mumbai"
                         android:text=""
                         android:textColor="@color/background_color"
                         android:textSize="24sp" />
 
 
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -239,142 +259,119 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_weight="4"
-                android:weightSum="2"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical">
-
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Skills"
+                    android:layout_gravity="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <LinearLayout
-
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/labour_profile_edit_skill_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:hint="Mason"
-                            android:text=""
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#A9A9A9" />
-
-                    <LinearLayout
-
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/labour_profile_edit_skill_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:hint="Electrician"
-                            android:text=""
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:baselineAligned="false">
                 <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Welder"
+                        android:textSize="16sp"
+                    android:id="@+id/checkboxWelder"/>
 
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carpenter"
+                    android:textSize="16sp"
+                    android:id="@+id/checkboxCarpenter"/>
 
-                        <EditText
-                            android:id="@+id/labour_profile_edit_skill_3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:hint="Plumber"
-                            android:text=""
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Electrician"
+                    android:textSize="16sp"
+                    android:id="@+id/checkboxElectrician"/>
 
-                    </LinearLayout>
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mason"
+                    android:textSize="16sp"
+                    android:checked="true"
+                    android:id="@+id/checkboxMason"/>
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#A9A9A9" />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Plumber"
+                    android:textSize="16sp"
+                    android:id="@+id/checkboxPlumber"/>
 
-                    <LinearLayout
-
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/labour_profile__edit_skill_4"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
-                            android:gravity="center"
-                            android:hint="Mechanic"
-                            android:text=""
-                            android:textColor="@color/background_color"
-                            android:textSize="24sp" />
-
-
-                    </LinearLayout>
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="Tradesman ( Prepairing Concrete , Finishing)"
+                    android:id="@+id/checkboxTradesman"/>
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Truck Driver"
+                        android:textSize="16sp"
+                        android:id="@+id/checkboxTruckDriver"/>
 
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pipe fitter"
+                        android:textSize="16sp"
+                        android:id="@+id/checkboxPipeFitter"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Crane Operator"
+                        android:textSize="16sp"
+                        android:id="@+id/checkboxCraneOperator"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Smith"
+                        android:textSize="16sp"
+                        android:id="@+id/checkboxSmith"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="Machine Operator ( Lift , Bending Rods)"
+                        android:id="@+id/checkboxMachineOperator"/>
+                </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <View
@@ -386,5 +383,5 @@
 
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 </LinearLayout>

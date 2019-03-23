@@ -102,10 +102,10 @@ public class HireIndividualLabour extends AppCompatActivity {
                         @SuppressLint("ShowToast")
                         @Override
                         public void onClick(View v) {
-                        /*Intent intent = new Intent(getApplicationContext(),SingleBooksDonationDetails.class);
+                        Intent intent = new Intent(getApplicationContext(),C_Hire_Labour.class);
                         intent.putExtra("PostId",post_key);
-                        startActivity(intent);*/
-                            Toast.makeText(getApplicationContext(), "" + post_key, Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                         //   Toast.makeText(getApplicationContext(), "" + post_key, Toast.LENGTH_LONG).show();
                         }
 
                     });

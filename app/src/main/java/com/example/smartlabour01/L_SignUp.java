@@ -71,16 +71,34 @@ public class L_SignUp extends AppCompatActivity {
             progressDialog.setCancelable(false);
             progressDialog.show();
             if (Password.equals(ConfirmPassword)) {
-                progressDialog.cancel();
+
                             DatabaseReference current_user_db = mDatabase.child(Contact);
                             current_user_db.child("Name").setValue(Name);
                             current_user_db.child("Contact").setValue(Contact);
                             current_user_db.child("Password").setValue(Password.hashCode());
+                            current_user_db.child("Age").setValue("NA");
+                current_user_db.child("Experience").setValue("NA");
+                current_user_db.child("Gender").setValue("NA");
+                current_user_db.child("Image").setValue("NA");
+                current_user_db.child("Location").setValue("NA");
+                current_user_db.child("Welder").setValue("NA");
+                current_user_db.child("Carpenter").setValue("NA");
+                current_user_db.child("Electrician").setValue("NA");
+                current_user_db.child("Mason").setValue("NA");
+                current_user_db.child("Plumber").setValue("NA");
+                current_user_db.child("Truck Driver").setValue("NA");
+                current_user_db.child("Pipe Fitter").setValue("NA");
+                current_user_db.child("Tradesman").setValue("NA");
+                current_user_db.child("Crane Operator").setValue("NA");
+                current_user_db.child("Smith").setValue("NA");
+                current_user_db.child("Machine Operator").setValue("NA");
+                current_user_db.child("Status").setValue("Available");
                             Toast.makeText(L_SignUp.this,"Successful",Toast.LENGTH_LONG).show();
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(KEY_NAME,Contact);
                 editor.apply();
+                progressDialog.cancel();
                             Intent mainIntent = new Intent(L_SignUp.this, L_Edit_Profile.class);
                             mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             mainIntent.putExtra("Profile","pic1");

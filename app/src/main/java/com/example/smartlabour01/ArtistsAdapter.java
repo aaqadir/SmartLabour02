@@ -58,7 +58,6 @@ public class ArtistsAdapter  extends RecyclerView.Adapter<ArtistsAdapter.ArtistV
         Artist artist = artistList.get(position);
 
         holder.postName.setText(artist.Name);
-
         holder.postContact.setText(artist.Contact);
 
         Picasso.with(mCtx).load(artist.Image).into(holder.postImage);
