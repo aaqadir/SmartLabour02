@@ -35,7 +35,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class HireIndividualLabour extends AppCompatActivity {
@@ -44,8 +46,10 @@ public class HireIndividualLabour extends AppCompatActivity {
     private RecyclerView mInstaList;
     private FirebaseAuth.AuthStateListener mAuthListner;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private FirebaseRecyclerAdapter adapter;
+    private LabourAdapter adapter;
     private String skill;
+    String Skill;
+    private List<Labour1> projectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,20 +68,35 @@ public class HireIndividualLabour extends AppCompatActivity {
         mInstaList = findViewById(R.id.hireIndividualLabor);
         mInstaList.setHasFixedSize(true);
         mInstaList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+        projectList = new ArrayList<>();
         skill = Objects.requireNonNull(getIntent().getExtras()).getString("Skill");
+        adapter = new LabourAdapter(this, projectList,skill);
+
+        mInstaList.setAdapter(adapter);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+
         fetch();
     }
 
     private void fetch() {
         //   swipeRefreshLayout.setRefreshing(true);
-        String Skill;
+
         switch (skill) {
+            case "Truck Driver":
+                Skill = "TruckDriver";
+                break;
+            case "Pipe Fitter":
+                Skill = "PipeFitter";
+                break;
+            case "Crane Operator":
+                Skill = "CraneOperator";
+                break;
             case "Tradesman (Repairing Concrete,Finishing)":
                 Skill = "Tradesman";
                 break;
             case "Machine Operator (Temporary Lift , Bending Metal Rods)":
-                Skill = "Machine Operator";
+                Skill = "MachineOperator";
                 break;
             default:
                 Skill = skill;
@@ -86,8 +105,11 @@ public class HireIndividualLabour extends AppCompatActivity {
 
         Query query;
          query = mDatabase;
-         query = query.orderByChild(Skill).equalTo("Yes");
-      FirebaseRecyclerOptions<Labour> options = new FirebaseRecyclerOptions.Builder<Labour>().setQuery(query, new SnapshotParser<Labour>() {
+      //   query = query.orderByChild(Skill).equalTo("Yes");
+
+         query.addListenerForSingleValueEvent(valueEventListener);
+
+    /*  FirebaseRecyclerOptions<Labour> options = new FirebaseRecyclerOptions.Builder<Labour>().setQuery(query, new SnapshotParser<Labour>() {
             @NonNull
             @Override
             public Labour parseSnapshot(@NonNull DataSnapshot snapshot) {
@@ -96,9 +118,9 @@ public class HireIndividualLabour extends AppCompatActivity {
                             Objects.requireNonNull(snapshot.child("Contact").getValue()).toString(),
                             Objects.requireNonNull(snapshot.child("Experience").getValue()).toString(),
                             Objects.requireNonNull(snapshot.child("Image").getValue()).toString());
-                /*} else {
+                *//*} else {
                     return new Labour( "NA","NA","NA","NA","NA");
-                }*/
+                }*//*
             }
         }).build();
             adapter = new FirebaseRecyclerAdapter<Labour, ViewHolder>(options) {
@@ -131,7 +153,7 @@ public class HireIndividualLabour extends AppCompatActivity {
                 public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
                     View view = LayoutInflater.from(viewGroup.getContext())
                             .inflate(R.layout.labour_card, viewGroup, false);
-/*
+*//*
                     mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -145,15 +167,15 @@ public class HireIndividualLabour extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });*/
+                    });*//*
                     return new ViewHolder(view);
                 }
             };
             mInstaList.setAdapter(adapter);
-
+*/
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+  /*  public static class ViewHolder extends RecyclerView.ViewHolder{
         View mView;
         ViewHolder(View itemView) {
             super(itemView);
@@ -192,11 +214,76 @@ public class HireIndividualLabour extends AppCompatActivity {
         adapter.stopListening();
     }
 
-
+*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }
+
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            projectList.clear();
+            long count = 0;
+
+            if (dataSnapshot.exists()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+               // count2++;
+                    String Skills = "NA";
+                        Labour1 labour1 = snapshot.getValue(Labour1.class);
+                       if (Skill.equals("Welder")) {
+                           Skills =   Objects.requireNonNull(labour1).Welder;
+                       }
+                       if (Skill.equals("Carpenter")) {
+                           Skills =   Objects.requireNonNull(labour1).Carpenter;
+                       }
+                       if (Skill.equals("Electrician")){
+                           Skills =   Objects.requireNonNull(labour1).Electrician;
+                       }
+                    if (Skill.equals("Mason")){
+                        Skills =   Objects.requireNonNull(labour1).Mason;
+                    }
+                    if (Skill.equals("Plumber")){
+                        Skills =   Objects.requireNonNull(labour1).Plumber;
+                    }
+                    if (Skill.equals("TruckDriver")){
+                        Skills =   Objects.requireNonNull(labour1).TruckDriver;
+                    }
+                    if (Skill.equals("PipeFitter")){
+                        Skills=   Objects.requireNonNull(labour1).PipeFitter;
+                    }
+                    if (Skill.equals("Tradesman")){
+                        Skills =   Objects.requireNonNull(labour1).Tradesman;
+                    }
+                    if (Skill.equals("CraneOperator")){
+                        Skills=   Objects.requireNonNull(labour1).CraneOperator;
+                    }
+                    if (Skill.equals("Smith")){
+                        Skills =   Objects.requireNonNull(labour1).Smith;
+                    }
+                    if (Skill.equals("MachineOperator")){
+                        Skills =   Objects.requireNonNull(labour1).MachineOperator;
+                    }
+                        if (Objects.requireNonNull(labour1).Status.contains("Available") && Objects.requireNonNull(Skills).contains("Yes")) {
+                            count++;
+                            projectList.add(labour1);
+                        }
+                }
+                if (count==0){
+                    Toast.makeText(getApplicationContext(),"No Labour Available For Hire With Skill as "+skill,Toast.LENGTH_LONG).show();
+                  }
+                adapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
+
+
 }

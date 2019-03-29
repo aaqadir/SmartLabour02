@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,16 +22,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class C_Profile extends AppCompatActivity {
 
-    private TextView gender,experience,phone,location,type1,type2,type3,type4,name,email;
-    private DatabaseReference mDatabase;
+    private TextView gender,experience,phone,location,name,email;
+    private DatabaseReference mDatabase,databaseReference;
     private FirebaseAuth mAuth;
     private CircleImageView circleImageView;
+    ListView listView;
+    ArrayAdapter<String> arrayAdapter;
+    ArrayList<String> arrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,22 +48,18 @@ public class C_Profile extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
+        listView = findViewById(R.id.c_profile_listView);
         name = findViewById(R.id.tvName);
         email = findViewById(R.id.tv_email);
         gender = findViewById(R.id.tv_gender);
         experience = findViewById(R.id.tv_experience);
         phone = findViewById(R.id.tv_phone);
         location = findViewById(R.id.tv_location);
-        type1 = findViewById(R.id.tv_type1);
-        type2 = findViewById(R.id.tv_type2);
-        type3 = findViewById(R.id.tv_type3);
-        type4 = findViewById(R.id.tv_type4);
         circleImageView = findViewById(R.id.ivProfile);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("ContractorUser");
-
+        databaseReference = FirebaseDatabase.getInstance().getReference("ContractorProjectTypes").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
 
         getProfileInfo();
     }
@@ -73,10 +75,6 @@ public class C_Profile extends AppCompatActivity {
                 String Gender = (String) dataSnapshot.child("Gender").getValue();
                 String Location = (String) dataSnapshot.child("Location").getValue();
                 String Experience = (String) dataSnapshot.child("Experience").getValue();
-                String Type1 = (String) dataSnapshot.child("Type1").getValue();
-                String Type2 = (String) dataSnapshot.child("Type2").getValue();
-                String Type3 = (String) dataSnapshot.child("Type3").getValue();
-                String Type4 = (String) dataSnapshot.child("Type4").getValue();
                 Picasso.with(C_Profile.this).load(Image).into(circleImageView);
                 name.setText(Name);
                 email.setText(Email);
@@ -84,11 +82,7 @@ public class C_Profile extends AppCompatActivity {
                 experience.setText(Experience);
                 phone.setText(Contact);
                 location.setText(Location);
-                type1.setText(Type1);
-                type2.setText(Type2);
-                type3.setText(Type3);
-                type4.setText(Type4);
-            }
+               }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -96,6 +90,28 @@ public class C_Profile extends AppCompatActivity {
             }
         });
 
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                        String value = Objects.requireNonNull(snapshot.getValue()).toString();
+                        arrayList.add(value);
+                    }
+            }else {
+                    arrayList.add("No Working Project Till Now");
+                }
+                arrayAdapter = new ArrayAdapter<>(C_Profile.this,R.layout.list_labour_skills, R.id.labour_skills,arrayList);
+                listView.setAdapter(arrayAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

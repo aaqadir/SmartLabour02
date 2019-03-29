@@ -111,12 +111,12 @@ public class L_Profile extends AppCompatActivity {
                 Electrician = (String) dataSnapshot.child("Electrician").getValue();
                 Mason = (String) dataSnapshot.child("Mason").getValue();
                 Plumber = (String) dataSnapshot.child("Plumber").getValue();
-                Truckdriver = (String) dataSnapshot.child("Truck Driver").getValue();
-                Pipefitter = (String) dataSnapshot.child("Pipe Fitter").getValue();
+                Truckdriver = (String) dataSnapshot.child("TruckDriver").getValue();
+                Pipefitter = (String) dataSnapshot.child("PipeFitter").getValue();
                 Tradesman = (String) dataSnapshot.child("Tradesman").getValue();
-                Craneoperator = (String) dataSnapshot.child("Crane Operator").getValue();
+                Craneoperator = (String) dataSnapshot.child("CraneOperator").getValue();
                 Smith = (String) dataSnapshot.child("Smith").getValue();
-                Machineoperator = (String) dataSnapshot.child("Machine Operator").getValue();
+                Machineoperator = (String) dataSnapshot.child("MachineOperator").getValue();
 
                 if (Objects.requireNonNull(Welder).equals("Yes"))
                     adapter.add("Welder");

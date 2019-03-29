@@ -128,12 +128,12 @@ public class L_Edit_Profile extends AppCompatActivity {
                     Electrician = (String) dataSnapshot.child("Electrician").getValue();
                     Mason = (String) dataSnapshot.child("Mason").getValue();
                     Plumber = (String) dataSnapshot.child("Plumber").getValue();
-                    Truckdriver = (String) dataSnapshot.child("Truck Driver").getValue();
-                    Pipefitter = (String) dataSnapshot.child("Pipe Fitter").getValue();
+                    Truckdriver = (String) dataSnapshot.child("TruckDriver").getValue();
+                    Pipefitter = (String) dataSnapshot.child("PipeFitter").getValue();
                     Tradesman = (String) dataSnapshot.child("Tradesman").getValue();
-                    Craneoperator = (String) dataSnapshot.child("Crane Operator").getValue();
+                    Craneoperator = (String) dataSnapshot.child("CraneOperator").getValue();
                     Smith = (String) dataSnapshot.child("Smith").getValue();
-                    Machineoperator = (String) dataSnapshot.child("Machine Operator").getValue();
+                    Machineoperator = (String) dataSnapshot.child("MachineOperator").getValue();
 
                     if (Objects.requireNonNull(Welder).equals("Yes"))
                         welder.setChecked(true);
@@ -339,12 +339,12 @@ public class L_Edit_Profile extends AppCompatActivity {
                                 database.child("Electrician").setValue(Electrician);
                                 database.child("Mason").setValue(Mason);
                                 database.child("Plumber").setValue(Plumber);
-                                database.child("Truck Driver").setValue(Truckdriver);
-                                database.child("Pipe Fitter").setValue(Pipefitter);
+                                database.child("TruckDriver").setValue(Truckdriver);
+                                database.child("PipeFitter").setValue(Pipefitter);
                                 database.child("Tradesman").setValue(Tradesman);
-                                database.child("Crane Operator").setValue(Craneoperator);
+                                database.child("CraneOperator").setValue(Craneoperator);
                                 database.child("Smith").setValue(Smith);
-                                database.child("Machine Operator").setValue(Machineoperator);
+                                database.child("MachineOperator").setValue(Machineoperator);
                                 Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), L_MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -366,12 +366,12 @@ public class L_Edit_Profile extends AppCompatActivity {
                     database.child("Electrician").setValue(Electrician);
                     database.child("Mason").setValue(Mason);
                     database.child("Plumber").setValue(Plumber);
-                    database.child("Truck Driver").setValue(Truckdriver);
-                    database.child("Pipe Fitter").setValue(Pipefitter);
+                    database.child("TruckDriver").setValue(Truckdriver);
+                    database.child("PipeFitter").setValue(Pipefitter);
                     database.child("Tradesman").setValue(Tradesman);
-                    database.child("Crane Operator").setValue(Craneoperator);
+                    database.child("CraneOperator").setValue(Craneoperator);
                     database.child("Smith").setValue(Smith);
-                    database.child("Machine Operator").setValue(Machineoperator);
+                    database.child("MachineOperator").setValue(Machineoperator);
                     Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), L_MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

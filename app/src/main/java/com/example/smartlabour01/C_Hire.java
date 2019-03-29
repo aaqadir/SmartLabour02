@@ -187,21 +187,34 @@ private EditText projectLabourCount,projectLocation,projectDate;
     }
 
     public void bulkHireButtonClicked(){
-            String Location = projectLocation.getText().toString().trim();
-            String Date = projectDate.getText().toString().trim();
-            String labourCount = projectLabourCount.getText().toString().trim();
+            final String Location = projectLocation.getText().toString().trim();
+            final String Date = projectDate.getText().toString().trim();
+            final String labourCount = projectLabourCount.getText().toString().trim();
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference("ContractorUser").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
             if (!projectType.equals("Select Project Type") && !labourType.equals("Select Labour Type") && !TextUtils.isEmpty(Location)&& !TextUtils.isEmpty(Date)&& !TextUtils.isEmpty(labourCount)){
-                DatabaseReference databaseReference2 = databaseReference1;
-                databaseReference2.child("ProjectType").setValue(projectType);
-                databaseReference2.child("LabourType").setValue(labourType);
-                databaseReference2.child("ProjectLocation").setValue(Location);
-                databaseReference2.child("ProjectStartDate").setValue(Date);
-                databaseReference2.child("LabourCount").setValue(labourCount);
-                databaseReference2.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-                Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
-                startActivity(intent);
-                finish();
+                    db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            DatabaseReference databaseReference2 = databaseReference1;
+                            databaseReference2.child("ProjectType").setValue(projectType);
+                            databaseReference2.child("LabourType").setValue(labourType);
+                            databaseReference2.child("ProjectLocation").setValue(Location);
+                            databaseReference2.child("ProjectStartDate").setValue(Date);
+                            databaseReference2.child("LabourCount").setValue(labourCount);
+                            databaseReference2.child("ContractorName").setValue(dataSnapshot.child("Name").getValue());
+                            databaseReference2.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+                            Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
             }else {
                 Toast.makeText(getApplicationContext(),"Please fill details",Toast.LENGTH_LONG).show();
             }

@@ -86,12 +86,12 @@ public class L_SignUp extends AppCompatActivity {
                 current_user_db.child("Electrician").setValue("NA");
                 current_user_db.child("Mason").setValue("NA");
                 current_user_db.child("Plumber").setValue("NA");
-                current_user_db.child("Truck Driver").setValue("NA");
-                current_user_db.child("Pipe Fitter").setValue("NA");
+                current_user_db.child("TruckDriver").setValue("NA");
+                current_user_db.child("PipeFitter").setValue("NA");
                 current_user_db.child("Tradesman").setValue("NA");
-                current_user_db.child("Crane Operator").setValue("NA");
+                current_user_db.child("CraneOperator").setValue("NA");
                 current_user_db.child("Smith").setValue("NA");
-                current_user_db.child("Machine Operator").setValue("NA");
+                current_user_db.child("MachineOperator").setValue("NA");
                 current_user_db.child("Status").setValue("Available");
                             Toast.makeText(L_SignUp.this,"Successful",Toast.LENGTH_LONG).show();
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);

@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,10 +40,12 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class C_Edit_Profile extends AppCompatActivity {
-private EditText gender,experience,phone,location,type1,type2,type3,type4;
+private EditText experience,phone,location;
 private TextView name,email;
 private DatabaseReference mDatabase;
 private FirebaseAuth mAuth;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
 private Uri resultUri;
 private CircleImageView circleImageView;
 private StorageReference storageReference;
@@ -58,14 +62,9 @@ private int counter=0;
 
         name = findViewById(R.id.tv_edit_Name);
         email = findViewById(R.id.tv_edit_email);
-        gender = findViewById(R.id.tv_edit_gender);
         experience = findViewById(R.id.tv_edit_experience);
         phone = findViewById(R.id.tv_edit_phone);
         location = findViewById(R.id.tv_edit_location);
-        type1 = findViewById(R.id.tv_edit_type1);
-        type2 = findViewById(R.id.tv_edit_type2);
-        type3 = findViewById(R.id.tv_edit_type3);
-        type4 = findViewById(R.id.tv_edit_type4);
         storageReference = FirebaseStorage.getInstance().getReference();
         circleImageView = findViewById(R.id.ivEditProfile);
         circleImageView.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +73,7 @@ private int counter=0;
                 profileImageButtonClicked();
             }
         });
+        radioGroup = findViewById(R.id.radioGroup);
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("ContractorUser");
@@ -84,6 +84,9 @@ private int counter=0;
 
         String profile = Objects.requireNonNull(getIntent().getExtras()).getString("Profile");
         if (Objects.requireNonNull(profile).equals("pic")) {
+            final RadioButton male,female;
+            male = findViewById(R.id.radioMale);
+            female = findViewById(R.id.radioFemale);
             mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,6 +97,11 @@ private int counter=0;
                     String Gender = (String) dataSnapshot.child("Gender").getValue();
                     String Location = (String) dataSnapshot.child("Location").getValue();
                     String Experience = (String) dataSnapshot.child("Experience").getValue();
+                    if (Objects.requireNonNull(Gender).equals("Male"))
+                        radioGroup.check(male.getId());
+                    if (Gender.equals("Female"))
+                        radioGroup.check(female.getId());
+
                     String Type1 = (String) dataSnapshot.child("Type1").getValue();
                     String Type2 = (String) dataSnapshot.child("Type2").getValue();
                     String Type3 = (String) dataSnapshot.child("Type3").getValue();
@@ -101,14 +109,10 @@ private int counter=0;
                     Picasso.with(C_Edit_Profile.this).load(image).into(circleImageView);
                     name.setText(Name);
                     email.setText(Email);
-                    gender.setText(Gender);
                     experience.setText(Experience);
                     phone.setText(Contact);
                     location.setText(Location);
-                    type1.setText(Type1);
-                    type2.setText(Type2);
-                    type3.setText(Type3);
-                    type4.setText(Type4);
+
                 }
 
                 @Override
@@ -184,16 +188,15 @@ private int counter=0;
     }
 
     public void doneButtonClicked(){
-        final String Gender = gender.getText().toString().trim();
         final String Experience = experience.getText().toString().trim();
         final String Phone = phone.getText().toString().trim();
         final String Location = location.getText().toString().trim();
-        final String Type1 = type1.getText().toString().trim();
-        final String Type2 = type2.getText().toString().trim();
-        final String Type3 = type3.getText().toString().trim();
-        final String Type4 = type4.getText().toString().trim();
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(selectedId);
+        final String Gender = radioButton.getText().toString().trim();
 
-         if(!TextUtils.isEmpty(Gender)&&!TextUtils.isEmpty(Experience) && !TextUtils.isEmpty(Phone) && !TextUtils.isEmpty(Location)){
+
+         if(!TextUtils.isEmpty(Experience) && !TextUtils.isEmpty(Phone) && !TextUtils.isEmpty(Location)){
              final ProgressDialog progressDialog = new ProgressDialog(C_Edit_Profile.this, R.style.MyAlertDialogStyle);
              progressDialog.setTitle("Profile Updating");
              progressDialog.setMessage("Uploading...Plz wait...");
@@ -228,26 +231,6 @@ private int counter=0;
                          database.child("Contact").setValue(Phone);
                          database.child("Location").setValue(Location);
                          database.child("Image").setValue(Objects.requireNonNull(downloadUrl).toString());
-                         if (!Type1.isEmpty()) {
-                             database.child("Type1").setValue(Type1);
-                         }else {
-                             database.child("Type1").setValue("NA");
-                         }
-                         if (!Type2.isEmpty()){
-                             database.child("Type2").setValue(Type2);
-                         }else {
-                             database.child("Type2").setValue("NA");
-                         }
-                         if (!Type3.isEmpty()){
-                             database.child("Type3").setValue(Type3);
-                         }else {
-                             database.child("Type3").setValue("NA");
-                         }
-                         if (!Type4.isEmpty()){
-                             database.child("Type4").setValue(Type4);
-                         }else {
-                             database.child("Type4").setValue("NA");
-                         }
                          Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                          Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
                          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -264,26 +247,6 @@ private int counter=0;
                 database.child("Experience").setValue(Experience);
                 database.child("Contact").setValue(Phone);
                 database.child("Location").setValue(Location);
-                if (!Type1.isEmpty()) {
-                    database.child("Type1").setValue(Type1);
-                } else {
-                    database.child("Type1").setValue("NA");
-                }
-                if (!Type2.isEmpty()) {
-                    database.child("Type2").setValue(Type2);
-                } else {
-                    database.child("Type2").setValue("NA");
-                }
-                if (!Type3.isEmpty()) {
-                    database.child("Type3").setValue(Type3);
-                } else {
-                    database.child("Type3").setValue("NA");
-                }
-                if (!Type4.isEmpty()) {
-                    database.child("Type4").setValue(Type4);
-                } else {
-                    database.child("Type4").setValue("NA");
-                }
                 Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), C_Main_Activity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

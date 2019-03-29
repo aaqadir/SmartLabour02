@@ -55,7 +55,7 @@ public class C_Hire_Individually extends AppCompatActivity {
       //  query.addListenerForSingleValueEvent(valueEventListener);
 */
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+/*        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         dbArtists = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("Highway Construction").child("Hired Labours");
         Button button = findViewById(R.id.hire);
         button.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class C_Hire_Individually extends AppCompatActivity {
                 db.child("Experience").setValue("6");
                 db.child("Skills").setValue("Electrician");
             }
-        });
+        });*/
     }
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
