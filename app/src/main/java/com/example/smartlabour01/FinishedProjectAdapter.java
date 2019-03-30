@@ -16,14 +16,14 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder> {
+public class FinishedProjectAdapter  extends RecyclerView.Adapter<FinishedProjectAdapter.FinishedProjectViewHolder> {
     private Context mCtx;
 
-    private List<Project> projectList;
+    private List<FinishedProject> projectList;
 
 
 
-    ProjectAdapter(Context mCtx, List<Project> projectList) {
+    FinishedProjectAdapter(Context mCtx, List<FinishedProject> projectList) {
 
         this.mCtx = mCtx;
 
@@ -37,11 +37,11 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
 
     @Override
 
-    public ProjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FinishedProjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.contractor_project_card, parent, false);
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.contractor_finished_project_card, parent, false);
 
-        return new ProjectViewHolder(view);
+        return new FinishedProjectViewHolder(view);
 
     }
 
@@ -49,9 +49,9 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
 
     @Override
 
-    public void onBindViewHolder(@NonNull final ProjectViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FinishedProjectViewHolder holder, int position) {
 
-        final Project project = projectList.get(position);
+        final FinishedProject project = projectList.get(position);
 
 
         holder.postProjectName.setText(project.ProjectName);
@@ -62,13 +62,15 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
 
         holder.postProjectStartDate.setText(project.ProjectStartDate);
 
+        holder.postProjectEndDate.setText(project.ProjectEndDate);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mCtx,C_Hired_Labour_For_Projects.class);
+                Intent intent = new Intent(mCtx,C_HiredLabourForFinishedProjects.class);
                 intent.putExtra("ProjectType",project.ProjectType);
                 mCtx.startActivity(intent);
             }
+
         });
     }
 
@@ -84,14 +86,14 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
 
 
 
-    class ProjectViewHolder extends RecyclerView.ViewHolder {
+    class FinishedProjectViewHolder extends RecyclerView.ViewHolder {
 
 
 
-        TextView postProjectName, postProjectType, postProjectLocation,postProjectStartDate;
+        TextView postProjectName, postProjectType, postProjectLocation,postProjectStartDate,postProjectEndDate;
 
 
-        ProjectViewHolder(@NonNull View itemView) {
+        FinishedProjectViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
@@ -105,6 +107,7 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
 
             postProjectStartDate = itemView.findViewById(R.id.contractorProjectStartDate);
 
+            postProjectEndDate = itemView.findViewById(R.id.contractorProjectEndDate);
         }
 
     }

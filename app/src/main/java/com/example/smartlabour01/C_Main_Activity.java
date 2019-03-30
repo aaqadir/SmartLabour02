@@ -116,6 +116,21 @@ public class C_Main_Activity extends AppCompatActivity
     public void fetch(){
         query = databaseReference.child("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
         query.addListenerForSingleValueEvent(valueEventListener);
+
+        DatabaseReference db = databaseReference.child("ContractorFinishedProjects").child(mAuth.getCurrentUser().getUid());
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DecimalFormat df = new DecimalFormat("00");
+                long count = dataSnapshot.getChildrenCount();
+                completed.setText(df.format(count));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     ValueEventListener valueEventListener = new ValueEventListener() {
@@ -190,14 +205,14 @@ public class C_Main_Activity extends AppCompatActivity
             startActivity(new Intent(C_Main_Activity.this, C_Profile.class));
             // finish();
         } else if (id == R.id.cont_project) {
-            startActivity(new Intent(C_Main_Activity.this, C_Hire_Individually.class));
+            startActivity(new Intent(C_Main_Activity.this, C_WorkHistory.class));
 
         } else if (id == R.id.cont_hire) {
             startActivity(new Intent(C_Main_Activity.this, C_Hire.class));
 
         } else if (id == R.id.cont_logout) {
             mAuth.signOut();
-            startActivity(new Intent(C_Main_Activity.this, UserActivity.class));
+            startActivity(new Intent(C_Main_Activity.this, C_LoginActivity.class));
             finish();
         } else if (id == R.id.cont_request) {
             startActivity(new Intent(C_Main_Activity.this, C_Pending_Request_Labour.class));

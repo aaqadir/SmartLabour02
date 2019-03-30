@@ -2,9 +2,11 @@ package com.example.smartlabour01;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,12 +36,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class C_Hired_Labour_For_Projects extends AppCompatActivity {
-private DatabaseReference mDatabase;
+private DatabaseReference mDatabase,databaseReference,databaseReference1;
 private FirebaseAuth mAuth;
     private RecyclerView mInstaList;
  //   private FirebaseRecyclerAdapter adapter;
@@ -63,8 +70,10 @@ private FirebaseAuth mAuth;
         }
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-        key =  Objects.requireNonNull(getIntent().getExtras()).getString("Key");
+        key =  Objects.requireNonNull(getIntent().getExtras()).getString("ProjectType");
+        databaseReference1=FirebaseDatabase.getInstance().getReference().child("ContractorProjectTypes").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+        mDatabase = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
+        databaseReference = FirebaseDatabase.getInstance().getReference("ContractorFinishedProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
         mInstaList = findViewById(R.id.hiredLabourForProject);
         mInstaList.setHasFixedSize(true);
         mInstaList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -85,10 +94,16 @@ private FirebaseAuth mAuth;
     }
 
     public void fetch(){
-        query = mDatabase.child(key).child("Hired Labours");
+        query = mDatabase.child("HiredLabours");
         query.addListenerForSingleValueEvent(valueEventListener);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.finish, menu);
+        return true;
+    }
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -224,11 +239,74 @@ private FirebaseAuth mAuth;
         adapter.stopListening();
     }
 
-*/    @Override
+*/
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.finish_project) {
+            finishProject(mDatabase,databaseReference,databaseReference1,key);
+        }
+
         if (item.getItemId()==android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
 
+    public void finishProject(final DatabaseReference mDatabase, final DatabaseReference databaseReference, final DatabaseReference databaseReference1, final String projectType){
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                databaseReference.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener()
+                {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull final DatabaseReference databaseReference) {
+                        if (databaseError != null)
+                        {
+                            Toast.makeText(getApplicationContext(),""+databaseError,Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Date c = Calendar.getInstance().getTime();
+                            System.out.println("Current time => " + c);
+
+                            @SuppressLint("SimpleDateFormat")
+                            SimpleDateFormat df = new SimpleDateFormat("dd/M/yyyy");
+                            final String formattedDate = df.format(c);
+                            databaseReference1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                                        if (Objects.requireNonNull(snapshot.getValue()).equals(projectType)){
+                                            snapshot.getRef().removeValue();
+                                            mDatabase.removeValue();
+                                            databaseReference.child("ProjectEndDate").setValue(formattedDate);
+                                            Toast.makeText(getApplicationContext(),"Project Completed",Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(getApplicationContext(),C_Main_Activity.class));
+                                            finish();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(),""+databaseError,Toast.LENGTH_LONG).show();
+            }
+
+        });
     }
 }

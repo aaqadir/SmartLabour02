@@ -1,5 +1,6 @@
 package com.example.smartlabour01;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -47,6 +48,7 @@ public class HiredAdapter  extends RecyclerView.Adapter<HiredAdapter.HiredViewHo
 
 
 
+    @SuppressLint("SetTextI18n")
     @Override
 
     public void onBindViewHolder(@NonNull final HiredViewHolder holder, int position) {
@@ -63,14 +65,14 @@ public class HiredAdapter  extends RecyclerView.Adapter<HiredAdapter.HiredViewHo
    //     holder.postProjectStartDate.setText(project.ProjectStartDate);
         Picasso.with(mCtx).load(hired.Image).into(holder.postHiredLabourImage);
 
-     /*   holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mCtx,C_Hired_Labour_For_Projects.class);
-             //   intent.putExtra("Key",hired.ProjectType);
+                Intent intent = new Intent(mCtx,C_HiredLabourProfile.class);
+                intent.putExtra("Labour",hired.Contact);
                 mCtx.startActivity(intent);
             }
-        });*/
+        });
     }
 
 

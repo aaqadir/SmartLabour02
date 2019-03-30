@@ -62,11 +62,11 @@ public class C_Hire_Labour extends AppCompatActivity {
         circleImageView = findViewById(R.id.labourProfile);
         mAuth = FirebaseAuth.getInstance();
 
-        databaseReference2 = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(mAuth.getCurrentUser().getUid());
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
 
         databaseReference1 = FirebaseDatabase.getInstance().getReference("ContractorProjectTypes").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
         mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("IndividualLabourHire").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("IndividualLabourHire");
         final String User = Objects.requireNonNull(getIntent().getExtras()).getString("PostId");
         final String Skill = Objects.requireNonNull(getIntent().getExtras()).getString("Skill");
         if(getSupportActionBar()!=null){
@@ -166,7 +166,7 @@ public class C_Hire_Labour extends AppCompatActivity {
 
     public void hireButtonClicked(String skill,String User){
 
-        String Skill;
+        final String Skill;
         switch (skill) {
             case "Tradesman (Repairing Concrete,Finishing)":
                 Skill = "Tradesman";
@@ -182,23 +182,21 @@ public class C_Hire_Labour extends AppCompatActivity {
         final String Location = projectLocation.getText().toString().trim();
         final String Date = projectDate.getText().toString().trim();
 
-        if (Status.equals("Available")) {
-
             if (!projectType.equals("Select Project Type") && !TextUtils.isEmpty(Location) && !TextUtils.isEmpty(Date)) {
 
-                final DatabaseReference post = databaseReference.child(Skill).push();
+                final DatabaseReference post = databaseReference2.child(projectType).child("HiredLabours").push();
                 final DatabaseReference reference = mDatabase.child(User);
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        post.child("Image").setValue(dataSnapshot.child("Image").getValue());
+                        post.child("Location").setValue(dataSnapshot.child("Location").getValue());
+                        post.child("Experience").setValue(dataSnapshot.child("Experience").getValue());
+                        post.child("Skills").setValue(Skill);
                         post.child("Name").setValue(dataSnapshot.child("Name").getValue());
                         post.child("Contact").setValue(dataSnapshot.child("Contact").getValue());
-                        post.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-                        post.child("ProjectType").setValue(projectType);
-                        post.child("ProjectStartDate").setValue(Date);
-                        post.child("ProjectLocation").setValue(Location);
-                        reference.child("Status").setValue("Requested");
-                        Toast.makeText(getApplicationContext(),"Request Sent to Placement Agency",Toast.LENGTH_LONG).show();
+                        reference.child("Status").setValue("Hired");
+                        Toast.makeText(getApplicationContext(),"Labour Hired for "+projectType,Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
                         startActivity(intent);
                         finish();
@@ -212,9 +210,7 @@ public class C_Hire_Labour extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "Please fill details", Toast.LENGTH_LONG).show();
             }
-        }else {
-            Toast.makeText(getApplicationContext(), "Labour is not available for Hire", Toast.LENGTH_LONG).show();
-        }
+
     }
 
     public void getProfileInfo(String user){

@@ -6,7 +6,7 @@
     android:background="@color/background"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".C_WorkHistory">
+    tools:context=".C_HiredLabourForFinishedProjects">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -25,14 +25,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:orientation="vertical">
-
+        android:layout_margin="8dp">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/contractorFinishedProjectDetails"/>
+            android:id="@+id/hiredLabourForProject">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </LinearLayout>

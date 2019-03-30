@@ -71,7 +71,6 @@ public class HireIndividualLabour extends AppCompatActivity {
         projectList = new ArrayList<>();
         skill = Objects.requireNonNull(getIntent().getExtras()).getString("Skill");
         adapter = new LabourAdapter(this, projectList,skill);
-
         mInstaList.setAdapter(adapter);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
@@ -272,6 +271,8 @@ public class HireIndividualLabour extends AppCompatActivity {
                             projectList.add(labour1);
                         }
                 }
+
+           //    String a= String.valueOf(projectList.get(0));
                 if (count==0){
                     Toast.makeText(getApplicationContext(),"No Labour Available For Hire With Skill as "+skill,Toast.LENGTH_LONG).show();
                   }

@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".C_Hire_Labour"></activity>
+        <activity android:name=".C_HiredLabourForFinishedProjects"></activity>
+        <activity android:name=".C_HiredLabourProfile" />
+        <activity android:name=".C_Hire_Labour" />
         <activity
             android:name=".C_Hired_Labour_For_Projects"
             android:label="@string/title_activity_c__hired__labour__for__projects"

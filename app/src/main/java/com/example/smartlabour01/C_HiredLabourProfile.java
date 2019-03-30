@@ -1,17 +1,13 @@
 package com.example.smartlabour01;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,8 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,7 +23,7 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class L_Profile extends AppCompatActivity {
+public class C_HiredLabourProfile extends AppCompatActivity {
     private TextView gender, experience, location, age;
     private TextView name, phone, skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12;
     private DatabaseReference mDatabase;
@@ -40,18 +34,24 @@ public class L_Profile extends AppCompatActivity {
     private static final String SHARED_PREF_NAME = "labourPref";
     private static final String KEY_NAME = "phoneNumber";
     private String user;
-  //  private ListView listView;
     private List<String> list;
-  //  private ArrayAdapter adapter;
-
+    //  private ListView listView;
+    private ArrayAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.l_profile);
+        setContentView(R.layout.activity_c__hired_labour_profile);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Profile");
         setSupportActionBar(toolbar);
+
+
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         name = findViewById(R.id.labour_profile_Name);
         gender = findViewById(R.id.labour_profile_gender);
@@ -74,17 +74,11 @@ public class L_Profile extends AppCompatActivity {
         skill11 = findViewById(R.id.skill_11);
         skill12 = findViewById(R.id.skill_12);
      //   adapter = new ArrayAdapter<String>(this, R.layout.list_labour_skills, R.id.labour_skills);
-        list = new ArrayList<>();
-        if(getSupportActionBar()!=null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
-
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        user = sharedPreferences.getString(KEY_NAME, null);
-
+        user = Objects.requireNonNull(getIntent().getExtras()).getString("Labour");
+       list = new ArrayList<>();
         getProfileInfo();
-}
+
+    }
 
     public void getProfileInfo(){
         mDatabase.child(Objects.requireNonNull(user)).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -97,7 +91,7 @@ public class L_Profile extends AppCompatActivity {
                 String Gender = (String) dataSnapshot.child("Gender").getValue();
                 String Location = (String) dataSnapshot.child("Location").getValue();
                 String Experience = (String) dataSnapshot.child("Experience").getValue();
-                Picasso.with(L_Profile.this).load(Image).into(circleImageView);
+                Picasso.with(C_HiredLabourProfile.this).load(Image).into(circleImageView);
                 name.setText(Name);
                 age.setText(Age);
                 gender.setText(Gender);
@@ -119,8 +113,10 @@ public class L_Profile extends AppCompatActivity {
 
                 if (Objects.requireNonNull(Welder).equals("Yes"))
                     list.add("Welder");
+                         //  adapter.add("Welder");
                 if (Objects.requireNonNull(Carpenter).equals("Yes"))
                     list.add("Carpenter");
+                   // adapter.add("Carpenter");
                 if (Objects.requireNonNull(Electrician).equals("Yes"))
                     list.add("Electrician");
                 if (Objects.requireNonNull(Mason).equals("Yes"))
@@ -132,7 +128,7 @@ public class L_Profile extends AppCompatActivity {
                 if (Objects.requireNonNull(Pipefitter).equals("Yes"))
                     list.add("Pipe Fitter");
                 if (Objects.requireNonNull(Tradesman).equals("Yes"))
-                   list.add("Tradesman");
+                    list.add("Tradesman");
                 if (Objects.requireNonNull(Craneoperator).equals("Yes"))
                     list.add("Crane Operator");
                 if (Objects.requireNonNull(Smith).equals("Yes"))
@@ -164,28 +160,12 @@ public class L_Profile extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.edit_profile) {
-            Intent intent = new Intent(L_Profile.this,L_Edit_Profile.class);
-            intent.putExtra("Profile", "pic");
-            startActivity(intent);
-        }
-
         if (item.getItemId()==android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit, menu);
-        return true;
     }
 
 }
