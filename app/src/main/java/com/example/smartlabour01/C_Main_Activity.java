@@ -39,11 +39,9 @@ public class C_Main_Activity extends AppCompatActivity
     private DatabaseReference mDatabase,databaseReference;
     private TextView name,email;
     private TextView inProgress,completed;
-    private RecyclerView mInstaList;
-//  private FirebaseRecyclerAdapter adapter;
+    //  private FirebaseRecyclerAdapter adapter;
     private CircleImageView profileimage;
     private ProjectAdapter adapter;
-    private Query query;
     private List<Project> projectList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +64,7 @@ public class C_Main_Activity extends AppCompatActivity
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("ContractorUser");
         mAuth = FirebaseAuth.getInstance();
-        mInstaList = findViewById(R.id.contractorProjectDetails);
+        RecyclerView mInstaList = findViewById(R.id.contractorProjectDetails);
         mInstaList.setHasFixedSize(true);
         mInstaList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         projectList = new ArrayList<>();
@@ -114,7 +112,7 @@ public class C_Main_Activity extends AppCompatActivity
     }
 
     public void fetch(){
-        query = databaseReference.child("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+        Query query = databaseReference.child("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
         query.addListenerForSingleValueEvent(valueEventListener);
 
         DatabaseReference db = databaseReference.child("ContractorFinishedProjects").child(mAuth.getCurrentUser().getUid());
