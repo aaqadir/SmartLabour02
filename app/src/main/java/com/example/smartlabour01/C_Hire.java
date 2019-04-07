@@ -1,5 +1,6 @@
 package com.example.smartlabour01;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -28,8 +29,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -190,6 +193,7 @@ private EditText projectLabourCount,projectLocation,projectDate;
             final String Location = projectLocation.getText().toString().trim();
             final String Date = projectDate.getText().toString().trim();
             final String labourCount = projectLabourCount.getText().toString().trim();
+        @SuppressLint("SimpleDateFormat") final String currentTime = new SimpleDateFormat("dd MM yyyy HH:mm:ss.SSS a").format(new Date());
             DatabaseReference db = FirebaseDatabase.getInstance().getReference("ContractorUser").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
             if (!projectType.equals("Select Project Type") && !labourType.equals("Select Labour Type") && !TextUtils.isEmpty(Location)&& !TextUtils.isEmpty(Date)&& !TextUtils.isEmpty(labourCount)){
                     db.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -201,6 +205,7 @@ private EditText projectLabourCount,projectLocation,projectDate;
                             databaseReference2.child("ProjectLocation").setValue(Location);
                             databaseReference2.child("ProjectStartDate").setValue(Date);
                             databaseReference2.child("LabourCount").setValue(labourCount);
+                            databaseReference2.child("RequestTime").setValue(currentTime);
                             databaseReference2.child("ContractorName").setValue(dataSnapshot.child("Name").getValue());
                             databaseReference2.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
                             Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
