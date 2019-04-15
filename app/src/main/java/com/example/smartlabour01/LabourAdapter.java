@@ -1,6 +1,7 @@
 package com.example.smartlabour01;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -76,13 +77,13 @@ public class LabourAdapter  extends RecyclerView.Adapter<LabourAdapter.LabourVie
                intent.putExtra("PostId",labour.Contact);
            //    Toast.makeText(mCtx,labour.Contact,Toast.LENGTH_LONG).show();
                 mCtx.startActivity(intent);
+                ((Activity)mCtx).finish();
                /* Intent intent = new Intent(mCtx,C_Hired_Labour_For_Labours.class);
                 intent.putExtra("Key",Labour.LabourType);
                 mCtx.startActivity(intent);*/
             }
         });
     }
-
 
 
     @Override

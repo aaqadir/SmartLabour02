@@ -186,6 +186,7 @@ public class C_Hire_Labour extends AppCompatActivity {
 
                 final DatabaseReference post = databaseReference2.child(projectType).child("HiredLabours").push();
                 final DatabaseReference reference = mDatabase.child(User);
+
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -196,8 +197,15 @@ public class C_Hire_Labour extends AppCompatActivity {
                         post.child("Name").setValue(dataSnapshot.child("Name").getValue());
                         post.child("Contact").setValue(dataSnapshot.child("Contact").getValue());
                         reference.child("Status").setValue("Hired");
+                        reference.child("HiredContractor").child("UID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+                        reference.child("HiredContractor").child("ProjectType").setValue(projectType);
+                        reference.child("HiredContractor").child("WorkType").setValue(Skill);
+                        reference.child("HiredContractor").child("Location").setValue(Location);
+                        reference.child("HiredContractor").child("StartDate").setValue(Date);
                         Toast.makeText(getApplicationContext(),"Labour Hired for "+projectType,Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                     }

@@ -33,11 +33,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class L_MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-          MaterialSearchView searchview;
+       //   MaterialSearchView searchview;
     private static final String SHARED_PREF_NAME = "labourPref" ;
     private static final String KEY_NAME = "phoneNumber";
-    private DatabaseReference mDatabase;
-    private TextView name,phone;
+    private DatabaseReference mDatabase,databaseReference;
+    private TextView name,phone,status,completed,projectType,workType,ContractorName,projectLocation,contractorPhone,projectStartDate;
     private CircleImageView profileimage;
     private String user;
     @Override
@@ -49,7 +49,7 @@ public class L_MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Home");
         toolbar.setTitleTextColor(Color.parseColor("#212121"));
-         searchview = findViewById(R.id.search_view);
+     //    searchview = findViewById(R.id.search_view);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,7 +63,14 @@ public class L_MainActivity extends AppCompatActivity
         name = navigationView.getHeaderView(0).findViewById(R.id.labourUserNameDisplay);
         profileimage = navigationView.getHeaderView(0).findViewById(R.id.labourProfileImage);
         phone = navigationView.getHeaderView(0).findViewById(R.id.labourUserContactDisplay);
-
+        status = findViewById(R.id.labour_dashboard_Status);
+        completed = findViewById(R.id.labour_project_completed);
+        projectType = findViewById(R.id.inProgressProjectType);
+        workType = findViewById(R.id.inProgressWorkType);
+        ContractorName = findViewById(R.id.inProgressContractorName);
+        projectLocation = findViewById(R.id.inProgressProjectLocation);
+        contractorPhone = findViewById(R.id.inProgressContractorPhone);
+        projectStartDate = findViewById(R.id.inProgressProjectStartDate);
 
        /* final TextView textView2 = findViewById(R.id.textView6);
         Switch sw = (Switch) findViewById(R.id.switch1);
@@ -80,6 +87,7 @@ public class L_MainActivity extends AppCompatActivity
         });*/
 
          mDatabase = FirebaseDatabase.getInstance().getReference().child("LabourUser");
+         databaseReference = FirebaseDatabase.getInstance().getReference("ContractorUser");
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
         user = sharedPreferences.getString(KEY_NAME,null);
@@ -103,12 +111,40 @@ public class L_MainActivity extends AppCompatActivity
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    String contractorName = (String) dataSnapshot.child("Name").getValue();
+                     final String contractorName = (String) dataSnapshot.child("Name").getValue();
                     name.setText(contractorName);
                     String contractorImage = (String) dataSnapshot.child("Image").getValue();
                     Picasso.with(L_MainActivity.this).load(contractorImage).into(profileimage);
                     String Contact = (String) dataSnapshot.child("Contact").getValue();
                     phone.setText(Contact);
+                    String Status = (String) dataSnapshot.child("Status").getValue();
+                    status.setText(Status);
+                    String ContractorUID = (String) dataSnapshot.child("HiredContractor").child("UID").getValue();
+                    String ProjectType = (String) dataSnapshot.child("HiredContractor").child("ProjectType").getValue();
+                    String WorkType = (String) dataSnapshot.child("HiredContractor").child("WorkType").getValue();
+                    String Location = (String) dataSnapshot.child("HiredContractor").child("Location").getValue();
+                    String StartDate = (String) dataSnapshot.child("HiredContractor").child("StartDate").getValue();
+
+                    if (!Objects.requireNonNull(ContractorUID).equals("NA")) {
+                        projectType.setText(ProjectType);
+                        workType.setText(WorkType);
+                        projectLocation.setText(Location);
+                        projectStartDate.setText(StartDate);
+                        databaseReference.child(Objects.requireNonNull(ContractorUID)).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String Name = (String) dataSnapshot.child("Name").getValue();
+                                String Contact = (String) dataSnapshot.child("Contact").getValue();
+                                ContractorName.setText(Name);
+                                contractorPhone.setText(Contact);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
 
                 }
 
@@ -120,11 +156,6 @@ public class L_MainActivity extends AppCompatActivity
         }
     }
 
-    public void onBlueBtnClick(View view) {
-        LinearLayout background = findViewById(R.id.btnlayout);
-        background.setBackgroundColor(Color.WHITE);
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -134,7 +165,7 @@ public class L_MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -142,7 +173,7 @@ public class L_MainActivity extends AppCompatActivity
         MenuItem item=menu.findItem(R.id.action_search);
         searchview.setMenuItem(item);
         return true;
-    }
+    }*/
 
    /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {

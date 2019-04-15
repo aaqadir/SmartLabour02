@@ -73,7 +73,6 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
     }
 
 
-
     @Override
 
     public int getItemCount() {
