@@ -122,7 +122,10 @@ public class C_HiredLabourForFinishedProjects extends AppCompatActivity {
 
     public void deleteProject(DatabaseReference mDatabase){
         mDatabase.removeValue();
-        startActivity(new Intent(getApplicationContext(),C_Main_Activity.class));
+        Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         finish();
     }
 

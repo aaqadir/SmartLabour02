@@ -103,7 +103,7 @@ private FirebaseAuth mAuth;
                             Toast.makeText(this,"Project Added Successfully",Toast.LENGTH_LONG).show();
                             Intent mainIntent = new Intent(this, C_Main_Activity.class);
                             mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            mainIntent.putExtra("Profile","pic1");
+                       //     mainIntent.putExtra("Profile","pic1");
                             mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(mainIntent);
                             finish();

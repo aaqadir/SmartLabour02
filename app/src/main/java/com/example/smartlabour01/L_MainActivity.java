@@ -124,26 +124,22 @@ public class L_MainActivity extends AppCompatActivity
                     String WorkType = (String) dataSnapshot.child("HiredContractor").child("WorkType").getValue();
                     String Location = (String) dataSnapshot.child("HiredContractor").child("Location").getValue();
                     String StartDate = (String) dataSnapshot.child("HiredContractor").child("StartDate").getValue();
-
+                    String Contractor_Name = (String) dataSnapshot.child("HiredContractor").child("Name").getValue();
+                    String Contractor_Contact = (String) dataSnapshot.child("HiredContractor").child("Contact").getValue();
                     if (!Objects.requireNonNull(ContractorUID).equals("NA")) {
                         projectType.setText(ProjectType);
                         workType.setText(WorkType);
                         projectLocation.setText(Location);
                         projectStartDate.setText(StartDate);
-                        databaseReference.child(Objects.requireNonNull(ContractorUID)).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                String Name = (String) dataSnapshot.child("Name").getValue();
-                                String Contact = (String) dataSnapshot.child("Contact").getValue();
-                                ContractorName.setText(Name);
-                                contractorPhone.setText(Contact);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
+                        ContractorName.setText(Contractor_Name);
+                        contractorPhone.setText(Contractor_Contact);
+                    }else {
+                        projectType.setText("-");
+                        workType.setText("-");
+                        projectLocation.setText("-");
+                        projectStartDate.setText("-");
+                        ContractorName.setText("-");
+                        contractorPhone.setText("-");
                     }
 
                 }

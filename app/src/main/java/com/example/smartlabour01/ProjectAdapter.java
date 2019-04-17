@@ -68,6 +68,7 @@ public class ProjectAdapter  extends RecyclerView.Adapter<ProjectAdapter.Project
                 Intent intent = new Intent(mCtx,C_Hired_Labour_For_Projects.class);
                 intent.putExtra("ProjectType",project.ProjectType);
                 mCtx.startActivity(intent);
+
             }
         });
     }

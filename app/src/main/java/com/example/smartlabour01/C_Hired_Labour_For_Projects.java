@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class C_Hired_Labour_For_Projects extends AppCompatActivity {
-private DatabaseReference mDatabase,databaseReference,databaseReference1;
+private DatabaseReference mDatabaseContractorProjects,mDatabaseContractorFinishedProjects,mDatabaseContractorProjectTypes,mDatabaseLabours;
 private FirebaseAuth mAuth;
     private RecyclerView mInstaList;
  //   private FirebaseRecyclerAdapter adapter;
@@ -71,9 +71,10 @@ private FirebaseAuth mAuth;
 
         mAuth = FirebaseAuth.getInstance();
         key =  Objects.requireNonNull(getIntent().getExtras()).getString("ProjectType");
-        databaseReference1=FirebaseDatabase.getInstance().getReference().child("ContractorProjectTypes").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-        mDatabase = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
-        databaseReference = FirebaseDatabase.getInstance().getReference("ContractorFinishedProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
+        mDatabaseContractorProjectTypes=FirebaseDatabase.getInstance().getReference().child("ContractorProjectTypes").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+        mDatabaseContractorProjects = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
+        mDatabaseContractorFinishedProjects = FirebaseDatabase.getInstance().getReference("ContractorFinishedProjects").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child(key);
+        mDatabaseLabours = FirebaseDatabase.getInstance().getReference("LabourUser");
         mInstaList = findViewById(R.id.hiredLabourForProject);
         mInstaList.setHasFixedSize(true);
         mInstaList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -94,7 +95,7 @@ private FirebaseAuth mAuth;
     }
 
     public void fetch(){
-        query = mDatabase.child("HiredLabours");
+        query = mDatabaseContractorProjects.child("HiredLabours");
         query.addListenerForSingleValueEvent(valueEventListener);
     }
 
@@ -133,7 +134,7 @@ private FirebaseAuth mAuth;
     /*  private void fetch() {
         //   swipeRefreshLayout.setRefreshing(true);
         Query query;
-        query = mDatabase.child(key).child("HiredLabours");
+        query = mDatabaseContractorProjects.child(key).child("HiredLabours");
         FirebaseRecyclerOptions<HiredLabour> options = new FirebaseRecyclerOptions.Builder<HiredLabour>().setQuery(query, new SnapshotParser<HiredLabour>() {
             @NonNull
             @Override
@@ -180,7 +181,7 @@ private FirebaseAuth mAuth;
                 View view = LayoutInflater.from(viewGroup.getContext())
                         .inflate(R.layout.hired_labour_card, viewGroup, false);
 *//*
-                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    mDatabaseContractorProjects.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String key  = dataSnapshot.getKey();
@@ -246,7 +247,7 @@ private FirebaseAuth mAuth;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.finish_project) {
-            finishProject(mDatabase,databaseReference,databaseReference1,key);
+            finishProject(mDatabaseContractorProjects,mDatabaseContractorFinishedProjects,mDatabaseContractorProjectTypes,key);
         }
 
         if (item.getItemId()==android.R.id.home)
@@ -254,16 +255,16 @@ private FirebaseAuth mAuth;
         return super.onOptionsItemSelected(item);
     }
 
-    public void finishProject(final DatabaseReference mDatabase, final DatabaseReference databaseReference, final DatabaseReference databaseReference1, final String projectType){
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener()
+    public void finishProject(final DatabaseReference mDatabaseContractorProject, final DatabaseReference mDatabaseContractorFinishedProject, final DatabaseReference mDatabaseContractorProjectTypes, final String projectType){
+        mDatabaseContractorProject.addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot)
             {
-                databaseReference.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener()
+                mDatabaseContractorFinishedProject.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener()
                 {
                     @Override
-                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull final DatabaseReference databaseReference) {
+                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull final DatabaseReference mDatabaseContractorFinishedProjects) {
                         if (databaseError != null)
                         {
                             Toast.makeText(getApplicationContext(),""+databaseError,Toast.LENGTH_LONG).show();
@@ -276,16 +277,25 @@ private FirebaseAuth mAuth;
                             @SuppressLint("SimpleDateFormat")
                             SimpleDateFormat df = new SimpleDateFormat("dd/M/yyyy");
                             final String formattedDate = df.format(c);
-                            databaseReference1.addValueEventListener(new ValueEventListener() {
+
+                            for (DataSnapshot snapshot:dataSnapshot.child("HiredLabours").getChildren()){
+                                String contact = Objects.requireNonNull(snapshot.child("Contact").getValue()).toString();
+                                ChangeStatusOfLabours(contact,formattedDate);
+                            }
+
+                            mDatabaseContractorProjectTypes.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                                         if (Objects.requireNonNull(snapshot.getValue()).equals(projectType)){
                                             snapshot.getRef().removeValue();
-                                            mDatabase.removeValue();
-                                            databaseReference.child("ProjectEndDate").setValue(formattedDate);
+                                            mDatabaseContractorProject.removeValue();
+                                            mDatabaseContractorFinishedProject.child("ProjectEndDate").setValue(formattedDate);
                                             Toast.makeText(getApplicationContext(),"Project Completed",Toast.LENGTH_LONG).show();
-                                            startActivity(new Intent(getApplicationContext(),C_Main_Activity.class));
+                                            Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
                                             finish();
                                         }
                                     }
@@ -309,4 +319,52 @@ private FirebaseAuth mAuth;
 
         });
     }
+
+    public void ChangeStatusOfLabours(String Contact, final String FinishedDate){
+        final DatabaseReference reference = mDatabaseLabours.child(Contact);
+        final DatabaseReference reference1 = mDatabaseLabours.child(Contact).child("CompletedHiredContractor").push();
+        reference.child("HiredContractor").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                reference1.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                        if (databaseError != null)
+                        {
+                            Toast.makeText(getApplicationContext(),""+databaseError,Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                           String key =  databaseReference.getKey();
+                            databaseReference.child("EndDate").setValue(FinishedDate);
+                            databaseReference.child("Key").setValue(key);
+                            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    reference.child("Status").setValue("Available");
+                                    for (DataSnapshot snapshot: dataSnapshot.child("HiredContractor").getChildren()){
+                                        String key = snapshot.getKey();
+                                        reference.child("HiredContractor").child(Objects.requireNonNull(key)).setValue("NA");
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
 }

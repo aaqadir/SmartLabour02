@@ -77,7 +77,6 @@ public class L_SignUp extends AppCompatActivity {
                             current_user_db.child("Contact").setValue(Contact);
                             current_user_db.child("Password").setValue(Password.hashCode());
                             current_user_db.child("Age").setValue("NA");
-                            current_user_db.child("HiredContractor").setValue("NA");
                 current_user_db.child("Experience").setValue("NA");
                 current_user_db.child("Gender").setValue("NA");
                 current_user_db.child("Image").setValue("NA");
@@ -99,7 +98,9 @@ public class L_SignUp extends AppCompatActivity {
                 current_user_db.child("HiredContractor").child("WorkType").setValue("NA");
                 current_user_db.child("HiredContractor").child("Location").setValue("NA");
                 current_user_db.child("HiredContractor").child("StartDate").setValue("NA");
-                            Toast.makeText(L_SignUp.this,"Successful",Toast.LENGTH_LONG).show();
+                current_user_db.child("HiredContractor").child("Name").setValue("NA");
+                current_user_db.child("HiredContractor").child("Contact").setValue("NA");
+                Toast.makeText(L_SignUp.this,"Successful",Toast.LENGTH_LONG).show();
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(KEY_NAME,Contact);
