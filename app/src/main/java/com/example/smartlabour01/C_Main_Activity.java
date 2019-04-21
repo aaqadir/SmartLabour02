@@ -216,7 +216,9 @@ public class C_Main_Activity extends AppCompatActivity
             startActivity(new Intent(C_Main_Activity.this, C_Pending_Request_Labour.class));
 
         } else if (id == R.id.cont_help) {
-            startActivity(new Intent(C_Main_Activity.this, HelpActivity.class));
+            Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
+            intent.putExtra("user","contractor");
+            startActivity(intent);
 
         } else if (id == R.id.cont_about) {
             startActivity(new Intent(C_Main_Activity.this, AboutActivity.class));

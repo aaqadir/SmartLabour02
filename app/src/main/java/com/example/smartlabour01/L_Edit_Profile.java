@@ -97,15 +97,15 @@ public class L_Edit_Profile extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+         final RadioButton male,female;
+        male = findViewById(R.id.radioMale);
+        female = findViewById(R.id.radioFemale);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         user = sharedPreferences.getString(KEY_NAME, null);
 
         String profile = Objects.requireNonNull(getIntent().getExtras()).getString("Profile");
         if (Objects.requireNonNull(profile).equals("pic")) {
-            final RadioButton male,female;
-            male = findViewById(R.id.radioMale);
-            female = findViewById(R.id.radioFemale);
             mDatabase.child(Objects.requireNonNull(user)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -178,6 +178,7 @@ public class L_Edit_Profile extends AppCompatActivity {
                     String Phone = (String) dataSnapshot.child("Contact").getValue();
                     name.setText(Name);
                     phone.setText(Phone);
+                    radioGroup.check(male.getId());
                 }
 
                 @Override
@@ -186,13 +187,10 @@ public class L_Edit_Profile extends AppCompatActivity {
                 }
             });
         }
-
     }
-
 
     public void profileImageButtonClicked() {
         CropImage.activity().setAspectRatio(1, 1).setCropShape(CropImageView.CropShape.OVAL).start(L_Edit_Profile.this);
-
     }
 
     @Override
@@ -211,7 +209,6 @@ public class L_Edit_Profile extends AppCompatActivity {
                 }
             }
         }
-
     }
 
 

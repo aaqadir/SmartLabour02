@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -149,6 +150,22 @@ public class L_MainActivity extends AppCompatActivity
 
                 }
             });
+
+            mDatabase.child(Objects.requireNonNull(user)).child("CompletedHiredContractor").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        DecimalFormat df = new DecimalFormat("00");
+                       long count =  dataSnapshot.getChildrenCount();
+                       completed.setText(df.format(count));
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
@@ -210,8 +227,9 @@ public class L_MainActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(L_MainActivity.this, HelpActivity.class));
-
+            Intent intent = new Intent(getApplicationContext(),HelpActivity.class);
+            intent.putExtra("user","labour");
+            startActivity(intent);
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(L_MainActivity.this, AboutActivity.class));
 

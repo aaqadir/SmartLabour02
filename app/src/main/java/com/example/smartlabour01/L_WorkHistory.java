@@ -65,13 +65,13 @@ public class L_WorkHistory extends AppCompatActivity {
         user = sharedPreferences.getString(KEY_NAME,null);
 
         if (user!=null){
-            fetch();
+            WorkHistory();
         }
 
     }
 
 
-    public void fetch(){
+    public void WorkHistory(){
         query = mDatabase.child(user).child("CompletedHiredContractor");
         query.addListenerForSingleValueEvent(valueEventListener);
     }

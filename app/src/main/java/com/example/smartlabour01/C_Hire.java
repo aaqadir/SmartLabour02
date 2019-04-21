@@ -207,6 +207,7 @@ private EditText projectLabourCount,projectLocation,projectDate;
                             databaseReference2.child("LabourCount").setValue(labourCount);
                             databaseReference2.child("RequestTime").setValue(currentTime);
                             databaseReference2.child("ContractorName").setValue(dataSnapshot.child("Name").getValue());
+                            databaseReference2.child("ContractorContact").setValue(dataSnapshot.child("Contact").getValue());
                             databaseReference2.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
                             Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(),C_Main_Activity.class);

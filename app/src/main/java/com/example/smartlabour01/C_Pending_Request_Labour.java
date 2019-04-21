@@ -90,7 +90,7 @@ public class C_Pending_Request_Labour extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 projectType = parent.getItemAtPosition(position).toString();
                 ((TextView)parent.getChildAt(0)).setTextSize(20);
-                    fetch();
+                    PendingRequestForLabour();
             }
 
             @Override
@@ -110,7 +110,7 @@ public class C_Pending_Request_Labour extends AppCompatActivity {
 
     }
 
-    public void fetch(){
+    public void PendingRequestForLabour(){
         Query query = mDatabase;
         query.addListenerForSingleValueEvent(valueEventListener);
 
