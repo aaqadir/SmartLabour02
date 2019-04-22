@@ -161,10 +161,22 @@ public class HireIndividualLabour extends AppCompatActivity {
                     if (Skill.equals("MachineOperator")){
                         Skills =   Objects.requireNonNull(labour1).MachineOperator;
                     }
+
                         if (Objects.requireNonNull(labour1).Status.contains("Available") && Objects.requireNonNull(Skills).contains("Yes")) {
                             count++;
+
                             projectList.add(labour1);
                         }
+                }
+
+                for (int i = 0; i<projectList.size() ; i++) {
+                    for (int j=i+1;j<projectList.size();j++){
+                        if(Integer.parseInt(projectList.get(j).Experience) > Integer.parseInt(projectList.get(i).Experience)){
+                            Labour1 a = projectList.get(j);
+                            projectList.set(j,projectList.get(i));
+                            projectList.set(i,a);
+                        }
+                    }
                 }
 
            //    String a= String.valueOf(projectList.get(0));

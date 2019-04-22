@@ -11,7 +11,7 @@
         <item
             android:id="@+id/cont_project"
             android:icon="@drawable/ic_work_history_black_24dp"
-            android:title="Project Completed" />
+            android:title="Project Completed"/>
         <item
             android:id="@+id/cont_hire"
             android:icon="@drawable/add_group"

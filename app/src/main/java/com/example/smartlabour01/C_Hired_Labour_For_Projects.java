@@ -112,11 +112,17 @@ private FirebaseAuth mAuth;
 
             if (dataSnapshot.exists()) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
                     Hired hired = snapshot.getValue(Hired.class);
-
                     hiredList.add(hired);
-
+                }
+                for (int i = 0; i<hiredList.size() ; i++) {
+                    for (int j=i+1;j<hiredList.size();j++){
+                        if(Integer.parseInt(hiredList.get(j).Experience) > Integer.parseInt(hiredList.get(i).Experience)){
+                            Hired a = hiredList.get(j);
+                            hiredList.set(j,hiredList.get(i));
+                            hiredList.set(i,a);
+                        }
+                    }
                 }
                 adapter.notifyDataSetChanged();
 

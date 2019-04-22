@@ -20,6 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/l_nav_header_main"
         app:menu="@menu/activity_main_drawer" />
