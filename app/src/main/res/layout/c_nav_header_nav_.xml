@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
     android:text=""
         android:textColor="@color/black"
@@ -28,7 +28,7 @@
         android:id="@+id/contractorUserEmailDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:hint="Email Address"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"

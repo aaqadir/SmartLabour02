@@ -269,7 +269,7 @@ private int counter=0;
 
                                  }
                              });
-                         }
+                         }else{
                          Uri downloadUrl = task.getResult();
                          progressDialog.cancel();
                          DatabaseReference database = mDatabase.child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
@@ -284,6 +284,7 @@ private int counter=0;
                          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                          startActivity(intent);
                          finish();
+                     }
                      }
                  }
              });

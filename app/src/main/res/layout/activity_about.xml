@@ -114,7 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Masood Ansari"
-                            android:layout_marginStart="30dp"
+                            android:layout_marginStart="20dp"
                             android:layout_below="@id/masoood"
                             android:layout_toEndOf="@id/center"
                             android:id="@+id/textMasood"/>
@@ -124,7 +124,7 @@
                             android:text="Developer"
                             android:layout_below="@id/textMasood"
                             android:layout_toEndOf="@id/center"
-                            android:layout_marginStart="30dp"
+                            android:layout_marginStart="20dp"
                             android:id="@+id/textMasoodProfile"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Abdul Qadir Ansari"
-                            android:layout_marginStart="30dp"
+                            android:layout_marginStart="20dp"
                             android:layout_below="@id/ahmedsir"
                             android:layout_toEndOf="@id/center"
                             android:id="@+id/textAAQ"/>
@@ -152,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Designer"
-                            android:layout_marginStart="30dp"
+                            android:layout_marginStart="20dp"
                             android:layout_below="@id/textShamshad"
                             android:layout_toEndOf="@id/center"
                             android:id="@+id/textAAQProfile"/>

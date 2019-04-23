@@ -413,7 +413,7 @@ public class L_Edit_Profile extends AppCompatActivity {
 
                                         }
                                     });
-                                }
+                                }else {
                                 Uri downloadUrl = task.getResult();
                                 progressDialog.cancel();
                                 DatabaseReference database = mDatabase.child(Objects.requireNonNull(user));
@@ -440,6 +440,7 @@ public class L_Edit_Profile extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
+                        }
                         }
                     });
                 } else {

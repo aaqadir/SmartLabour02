@@ -126,6 +126,8 @@ private FirebaseAuth mAuth;
                 }
                 adapter.notifyDataSetChanged();
 
+            }else{
+                Toast.makeText(getApplicationContext(),"No Labourer Hired",Toast.LENGTH_LONG).show();
             }
         }
 
