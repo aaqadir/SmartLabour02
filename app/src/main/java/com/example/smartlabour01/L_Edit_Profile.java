@@ -3,8 +3,10 @@ package com.example.smartlabour01;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,9 +41,12 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 
 public class L_Edit_Profile extends AppCompatActivity {
     private EditText age, experience, location;
@@ -203,6 +210,20 @@ public class L_Edit_Profile extends AppCompatActivity {
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 if (resultCode == RESULT_OK) {
                     resultUri = Objects.requireNonNull(result).getUri();
+                    File resultFile = null;
+                    File file = new File(resultUri.getPath());
+                  //  Bitmap bitmap ;
+                  /*  try {
+                      bitmap =  new Compressor(this).compressToBitmap(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }*/
+                    try {
+                        resultFile = new Compressor(this).compressToFile(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    resultUri = Uri.fromFile(resultFile);
                     circleImageView.setImageURI(resultUri);
                     counter++;
                 } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -322,10 +343,78 @@ public class L_Edit_Profile extends AppCompatActivity {
                         }
                     }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
+                        public void onComplete(@NonNull final Task<Uri> task) {
                             if (task.isSuccessful()) {
+                                if (!image.equals("NA")){
+                                    StorageReference photoRef = FirebaseStorage.getInstance().getReferenceFromUrl(image);
+                                    photoRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            final Uri downloadUrl = task.getResult();
+                                            progressDialog.cancel();
+                                            final DatabaseReference database = mDatabase.child(Objects.requireNonNull(user));
+                                            database.child("Experience").setValue(Experience);
+                                            database.child("Age").setValue(Age);
+                                            database.child("Gender").setValue(Gender);
+                                            database.child("Location").setValue(Location);
+                                            database.child("Image").setValue(Objects.requireNonNull(downloadUrl).toString());
+                                            database.child("Welder").setValue(Welder);
+                                            database.child("Carpenter").setValue(Carpenter);
+                                            database.child("Electrician").setValue(Electrician);
+                                            database.child("Mason").setValue(Mason);
+                                            database.child("Plumber").setValue(Plumber);
+                                            database.child("TruckDriver").setValue(Truckdriver);
+                                            database.child("PipeFitter").setValue(Pipefitter);
+                                            database.child("Tradesman").setValue(Tradesman);
+                                            database.child("CraneOperator").setValue(Craneoperator);
+                                            database.child("Smith").setValue(Smith);
+                                            database.child("MachineOperator").setValue(Machineoperator);
+                                            DatabaseReference db = database.child("HiredContractor");
+
+                                            db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    final DatabaseReference post = FirebaseDatabase.getInstance().getReference("ContractorProjects").child(Objects.requireNonNull(dataSnapshot.child("UID").getValue()).toString()).child(Objects.requireNonNull(dataSnapshot.child("ProjectType").getValue()).toString()).child("HiredLabours");
+                                                    post.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                            for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                                                if (snapshot.child("Contact").getValue().equals(user)){
+                                                                    String Key = snapshot.getKey();
+                                                                    post.child(Objects.requireNonNull(Key)).child("Image").setValue(Objects.requireNonNull(downloadUrl).toString());
+                                                                }
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+                                            Toast.makeText(getApplicationContext(), "Profile Updated Successfully", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(getApplicationContext(), L_MainActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception exception) {
+
+                                        }
+                                    });
+                                }
                                 Uri downloadUrl = task.getResult();
-                                //                      Toast.makeText(getApplicationContext(),"Upload Complete",Toast.LENGTH_LONG).show();
                                 progressDialog.cancel();
                                 DatabaseReference database = mDatabase.child(Objects.requireNonNull(user));
                                 database.child("Experience").setValue(Experience);

@@ -129,7 +129,9 @@ public class C_Pending_Request_Labour extends AppCompatActivity {
                     if (Objects.requireNonNull(snapshot.child("ContractorUID").getValue()).equals(mAuth.getCurrentUser().getUid())) {
                         if (Objects.requireNonNull(snapshot.child("ProjectType").getValue()).equals(projectType)) {
                             BulkHire bulkHire = snapshot.getValue(BulkHire.class);
-                            bulkHireList.add(bulkHire);
+                            if(Objects.requireNonNull(bulkHire).Request.equals("Pending")){
+                                bulkHireList.add(bulkHire);
+                            }
                         }
                     }
                 }

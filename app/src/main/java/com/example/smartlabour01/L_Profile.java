@@ -142,8 +142,8 @@ public class L_Profile extends AppCompatActivity {
                 if (Objects.requireNonNull(Machineoperator).equals("Yes"))
                     list.add("Machine Operator");
 
-                list.add("");list.add("");list.add("");list.add("");list.add("");
-                list.add("");list.add("");list.add("");list.add("");list.add("");
+                list.add("");list.add("");list.add("");list.add("");list.add("");list.add("");
+                list.add("");list.add("");list.add("");list.add("");list.add("");list.add("");
                 skill1.setText(Objects.requireNonNull(list.get(0)));
                 skill2.setText(Objects.requireNonNull(list.get(1)));
                 skill3.setText(Objects.requireNonNull(list.get(2)));

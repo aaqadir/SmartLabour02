@@ -206,6 +206,7 @@ private EditText projectLabourCount,projectLocation,projectDate;
                             databaseReference2.child("ProjectStartDate").setValue(Date);
                             databaseReference2.child("LabourCount").setValue(labourCount);
                             databaseReference2.child("RequestTime").setValue(currentTime);
+                            databaseReference2.child("Request").setValue("Pending");
                             databaseReference2.child("ContractorName").setValue(dataSnapshot.child("Name").getValue());
                             databaseReference2.child("ContractorContact").setValue(dataSnapshot.child("Contact").getValue());
                             databaseReference2.child("ContractorUID").setValue(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());

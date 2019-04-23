@@ -15,19 +15,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
-        <!--<ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:textSize="30dp"
-            android:text="NGO"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/labour"
-            android:src="@drawable/border"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center"
-            android:id="@+id/btnlab" />
--->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -49,19 +37,6 @@
         android:orientation="vertical"
         android:gravity="center">
 
- <!--       <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:textSize="30dp"
-            android:text="NGO"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/contractor"
-            android:src="@drawable/border"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center"
-            android:id="@+id/btncont" />
- -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="250dp"

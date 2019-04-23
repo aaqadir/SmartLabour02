@@ -40,7 +40,7 @@
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:padding="5dp"
-                    android:src="@drawable/dummyimage" />
+                    android:src="@drawable/ic_add_photo_black_24dp" />
 
                 <TextView
                     android:id="@+id/labour_profile_edit_Name"
