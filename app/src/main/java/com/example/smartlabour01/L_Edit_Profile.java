@@ -115,7 +115,9 @@ public class L_Edit_Profile extends AppCompatActivity {
                     String Age = (String) dataSnapshot.child("Age").getValue();
                     String Location = (String) dataSnapshot.child("Location").getValue();
                     String Experience = (String) dataSnapshot.child("Experience").getValue();
-                    Picasso.with(L_Edit_Profile.this).load(image).into(circleImageView);
+                    if (!image.equals("NA")) {
+                        Picasso.with(L_Edit_Profile.this).load(image).into(circleImageView);
+                    }
                     String Gender = (String) dataSnapshot.child("Gender").getValue();
                     if (Objects.requireNonNull(Gender).equals("Male"))
                         radioGroup.check(male.getId());

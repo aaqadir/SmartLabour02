@@ -97,7 +97,9 @@ public class L_Profile extends AppCompatActivity {
                 String Gender = (String) dataSnapshot.child("Gender").getValue();
                 String Location = (String) dataSnapshot.child("Location").getValue();
                 String Experience = (String) dataSnapshot.child("Experience").getValue();
-                Picasso.with(L_Profile.this).load(Image).into(circleImageView);
+                if (!Objects.requireNonNull(Image).equals("NA")) {
+                    Picasso.with(L_Profile.this).load(Image).into(circleImageView);
+                }
                 name.setText(Name);
                 age.setText(Age);
                 gender.setText(Gender);

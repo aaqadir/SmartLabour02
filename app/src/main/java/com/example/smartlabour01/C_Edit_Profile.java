@@ -106,7 +106,9 @@ private int counter=0;
                     String Type2 = (String) dataSnapshot.child("Type2").getValue();
                     String Type3 = (String) dataSnapshot.child("Type3").getValue();
                     String Type4 = (String) dataSnapshot.child("Type4").getValue();
-                    Picasso.with(C_Edit_Profile.this).load(image).into(circleImageView);
+                    if (!image.equals("NA")) {
+                        Picasso.with(C_Edit_Profile.this).load(image).into(circleImageView);
+                    }
                     name.setText(Name);
                     email.setText(Email);
                     experience.setText(Experience);

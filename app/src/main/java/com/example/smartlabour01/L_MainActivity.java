@@ -115,7 +115,9 @@ public class L_MainActivity extends AppCompatActivity
                      final String contractorName = (String) dataSnapshot.child("Name").getValue();
                     name.setText(contractorName);
                     String contractorImage = (String) dataSnapshot.child("Image").getValue();
-                    Picasso.with(L_MainActivity.this).load(contractorImage).into(profileimage);
+                    if (!Objects.requireNonNull(contractorImage).equals("NA")) {
+                        Picasso.with(L_MainActivity.this).load(contractorImage).into(profileimage);
+                    }
                     String Contact = (String) dataSnapshot.child("Contact").getValue();
                     phone.setText(Contact);
                     String Status = (String) dataSnapshot.child("Status").getValue();

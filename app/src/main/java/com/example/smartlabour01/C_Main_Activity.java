@@ -240,7 +240,9 @@ public class C_Main_Activity extends AppCompatActivity
                     String contractorName = (String) dataSnapshot.child("Name").getValue();
                     name.setText(contractorName);
                     String contractorImage = (String) dataSnapshot.child("Image").getValue();
-                    Picasso.with(C_Main_Activity.this).load(contractorImage).into(profileimage);
+                    if (!Objects.requireNonNull(contractorImage).equals("NA")) {
+                        Picasso.with(C_Main_Activity.this).load(contractorImage).into(profileimage);
+                    }
                     email.setText(mAuth.getCurrentUser().getEmail());
 
                 }
